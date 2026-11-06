@@ -23,6 +23,19 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden;
+            /* Creates the 3D perspective space for the card to rotate within */
+            perspective: 1000px; 
+        }
+
+        /* Ambient background glow */
+        .ambient-glow {
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(0,255,65,0.03) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .card-container {
@@ -30,9 +43,14 @@
             max-width: 420px;
             border: 1px solid var(--border-dim);
             padding: 40px 30px;
-            background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 100%);
-            box-shadow: 0 4px 30px rgba(0, 255, 65, 0.03);
+            background: linear-gradient(180deg, rgba(12,12,12,0.9) 0%, rgba(2,2,2,0.95) 100%);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 65, 0.05);
             position: relative;
+            z-index: 1;
+            /* Enables 3D pop-out for child elements */
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease;
+            backdrop-filter: blur(5px);
         }
 
         /* Top Accent Bar */
@@ -44,7 +62,25 @@
             width: 100%; 
             height: 2px;
             background: var(--accent-green);
-            box-shadow: 0 0 8px var(--accent-green);
+            box-shadow: 0 0 10px var(--accent-green);
+            transform: translateZ(1px);
+        }
+
+        /* Elements popping off the card background */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+            transform: translateZ(50px); /* Floats the highest */
+        }
+
+        .logo-container img {
+            height: 70px;
+            /* Inverts the black SVG to white and adds a terminal green glow */
+            filter: invert(1) drop-shadow(0px 0px 8px rgba(0, 255, 65, 0.6));
+        }
+
+        .header-section {
+            transform: translateZ(40px);
         }
 
         h1 {
@@ -68,6 +104,11 @@
             height: 1px;
             background-color: var(--border-dim);
             margin: 25px 0;
+            transform: translateZ(20px);
+        }
+
+        .data-section {
+            transform: translateZ(30px);
         }
 
         .data-row {
@@ -78,20 +119,15 @@
             letter-spacing: 0.5px;
         }
 
-        .data-label {
-            color: var(--text-muted);
-        }
-
-        .data-value {
-            text-align: right;
-            color: var(--text-main);
-        }
+        .data-label { color: var(--text-muted); }
+        .data-value { text-align: right; color: var(--text-main); font-weight: bold; }
 
         .links {
             display: flex;
             flex-direction: column;
             gap: 15px;
             margin-top: 35px;
+            transform: translateZ(40px);
         }
 
         a.button {
@@ -106,17 +142,20 @@
             letter-spacing: 1.5px;
             font-size: 0.85rem;
             transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.1);
         }
 
         a.button:hover {
             background-color: #ffffff;
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+            transform: scale(1.02);
         }
 
         a.button-outline {
-            background-color: transparent;
+            background-color: rgba(0, 255, 65, 0.05);
             color: var(--accent-green);
             border: 1px solid var(--accent-green);
+            box-shadow: none;
         }
 
         a.button-outline:hover {
@@ -131,45 +170,52 @@
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
+            transform: translateZ(20px);
         }
 
-        .blink {
-            animation: blinker 1s linear infinite;
-        }
-
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <div class="card-container">
-        <h1>Jesse DeWayne McCready</h1>
-        <h2>Principal Architect, CEO</h2>
+    <div class="ambient-glow"></div>
+
+    <div class="card-container" id="tilt-card">
         
-        <div class="data-row">
-            <span class="data-label">ENTITY:</span>
-            <span class="data-value">MONAD EDGE LLC</span>
+        <div class="logo-container">
+            <!-- Ensure zero-point-logo.svg is uploaded to the root of your GitHub Pages repo -->
+            <img src="zero-point-logo.svg" alt="MONAD EDGE Logo">
         </div>
-        <div class="data-row">
-            <span class="data-label">CAGE:</span>
-            <span class="data-value">243J6</span>
+
+        <div class="header-section">
+            <h1>Jesse DeWayne McCready</h1>
+            <h2>Principal Architect, CEO</h2>
         </div>
-        <div class="data-row">
-            <span class="data-label">UEI:</span>
-            <span class="data-value">YE9ZHNXRY2N8</span>
-        </div>
-        <div class="data-row">
-            <span class="data-label">IP STATUS:</span>
-            <span class="data-value">Prov. App. 64/007,869</span>
+        
+        <div class="data-section">
+            <div class="data-row">
+                <span class="data-label">ENTITY:</span>
+                <span class="data-value">MONAD EDGE LLC</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">CAGE:</span>
+                <span class="data-value">243J6</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">UEI:</span>
+                <span class="data-value">YE9ZHNXRY2N8</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">IP STATUS:</span>
+                <span class="data-value">Prov. App. 64/007,869</span>
+            </div>
         </div>
         
         <div class="divider"></div>
         
         <div class="links">
-            <!-- Replace with your preferred contact email -->
-            <a href="mailto:jessemccready10@gmail.com" class="button">Initiate Contact</a>
+            <a href="mailto:jesse.mccready@example.com" class="button">Initiate Contact</a>
             <a href="https://github.com/MONADEDGELLC" class="button button-outline" target="_blank">MONAD EDGE GitHub</a>
             <a href="https://www.linkedin.com/in/jesse-mccready-893b52245/" class="button button-outline" target="_blank">LinkedIn Network</a>
         </div>
@@ -180,5 +226,39 @@
         </div>
     </div>
 
+    <script>
+        const card = document.getElementById('tilt-card');
+        const body = document.querySelector('body');
+
+        // Dynamic 3D tilt effect
+        function handleMove(e) {
+            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            let xAxis = (window.innerWidth / 2 - clientX) / 25;
+            let yAxis = (window.innerHeight / 2 - clientY) / 25;
+            
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        }
+
+        function handleLeave() {
+            card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        }
+
+        function handleEnter() {
+            card.style.transition = 'none';
+        }
+
+        // Mouse events for desktop
+        body.addEventListener('mousemove', handleMove);
+        body.addEventListener('mouseleave', handleLeave);
+        body.addEventListener('mouseenter', handleEnter);
+
+        // Touch events for mobile
+        body.addEventListener('touchmove', handleMove);
+        body.addEventListener('touchend', handleLeave);
+        body.addEventListener('touchstart', handleEnter);
+    </script>
 </body>
 </html>
