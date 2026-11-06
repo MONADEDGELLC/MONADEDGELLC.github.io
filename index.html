@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONAD EDGE LLC | Jesse DeWayne McCready</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #e0e0e0;
+            --accent-green: #00ff41;
+            --border-dim: #1a1a1a;
+            --text-muted: #666666;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card-container {
+            width: 90%;
+            max-width: 420px;
+            border: 1px solid var(--border-dim);
+            padding: 40px 30px;
+            background: linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 100%);
+            box-shadow: 0 4px 30px rgba(0, 255, 65, 0.03);
+            position: relative;
+        }
+
+        /* Top Accent Bar */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 2px;
+            background: var(--accent-green);
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 0 0 5px 0;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            margin: 0 0 25px 0;
+            color: var(--accent-green);
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--border-dim);
+            margin: 25px 0;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .data-label {
+            color: var(--text-muted);
+        }
+
+        .data-value {
+            text-align: right;
+            color: var(--text-main);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        a.button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: var(--bg-color);
+            background-color: var(--accent-green);
+            padding: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        a.button:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+        }
+
+        a.button-outline {
+            background-color: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        a.button-outline:hover {
+            background-color: var(--accent-green);
+            color: var(--bg-color);
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <h1>Jesse DeWayne McCready</h1>
+        <h2>Principal Architect, CEO</h2>
+        
+        <div class="data-row">
+            <span class="data-label">ENTITY:</span>
+            <span class="data-value">MONAD EDGE LLC</span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">CAGE:</span>
+            <span class="data-value">243J6</span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">UEI:</span>
+            <span class="data-value">YE9ZHNXRY2N8</span>
+        </div>
+        <div class="data-row">
+            <span class="data-label">IP STATUS:</span>
+            <span class="data-value">Prov. App. 64/007,869</span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="links">
+            <!-- Replace with your preferred contact email -->
+            <a href="mailto:jessemccready10@gmail.com" class="button">Initiate Contact</a>
+            <a href="https://github.com/MONADEDGELLC" class="button button-outline" target="_blank">MONAD EDGE GitHub</a>
+            <a href="https://www.linkedin.com/in/jesse-mccready-893b52245/" class="button button-outline" target="_blank">LinkedIn Network</a>
+        </div>
+        
+        <div class="footer">
+            <span id="sys-status">SYS.STATUS: ONLINE<span class="blink">_</span></span><br><br>
+            ZERO-ENTROPY TOPOLOGY (Z.E.T.)
+        </div>
+    </div>
+
+</body>
+</html>
