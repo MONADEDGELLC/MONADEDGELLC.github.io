@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MONAD EDGE LLC | Jesse DeWayne McCready</title>
+    <!-- Importing Google Fonts for industrial/tech aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --text-main: #e0e0e0;
+            --bg-color: #030303;
+            --text-main: #f0f0f0;
             --accent-green: #00ff41;
-            --border-dim: #1a1a1a;
-            --text-muted: #666666;
+            --hazard-yellow: #e5c158; /* Off-white / industrial warning tone */
+            --hazard-dark: #121212;
+            --border-dim: #222222;
+            --text-muted: #777777;
         }
 
         body {
@@ -18,85 +22,90 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Inter', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
-            /* Creates the 3D perspective space for the card to rotate within */
-            perspective: 1000px; 
+            perspective: 1000px;
         }
 
-        /* Ambient background glow */
         .ambient-glow {
             position: absolute;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(0,255,65,0.03) 0%, rgba(0,0,0,0) 70%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(229,193,88,0.03) 0%, rgba(0,0,0,0) 70%);
             z-index: 0;
             pointer-events: none;
         }
 
         .card-container {
             width: 90%;
-            max-width: 420px;
+            max-width: 440px;
             border: 1px solid var(--border-dim);
-            padding: 40px 30px;
-            background: linear-gradient(180deg, rgba(12,12,12,0.9) 0%, rgba(2,2,2,0.95) 100%);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 65, 0.05);
+            padding: 45px 35px;
+            background: linear-gradient(135deg, rgba(15,15,15,0.95) 100%, rgba(5,5,5,0.98) 0%);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 255, 65, 0.03);
             position: relative;
             z-index: 1;
-            /* Enables 3D pop-out for child elements */
             transform-style: preserve-3d;
             transition: transform 0.1s ease;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
         }
 
-        /* Top Accent Bar */
+        /* Industrial Hazard Stripe Top Border (Warehouse Cordon Style) */
         .card-container::before {
             content: '';
             position: absolute;
             top: 0; 
             left: 0; 
             width: 100%; 
-            height: 2px;
-            background: var(--accent-green);
-            box-shadow: 0 0 10px var(--accent-green);
-            transform: translateZ(1px);
+            height: 6px;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--hazard-yellow),
+                var(--hazard-yellow) 12px,
+                var(--hazard-dark) 12px,
+                var(--hazard-dark) 24px
+            );
+            transform: translateZ(2px);
         }
 
-        /* Elements popping off the card background */
         .logo-container {
             text-align: center;
-            margin-bottom: 25px;
-            transform: translateZ(50px); /* Floats the highest */
+            margin-bottom: 20px;
+            transform: translateZ(60px);
         }
 
         .logo-container img {
-            height: 70px;
-            /* Inverts the black SVG to white and adds a terminal green glow */
-            filter: invert(1) drop-shadow(0px 0px 8px rgba(0, 255, 65, 0.6));
+            height: 65px;
+            filter: invert(1) drop-shadow(0px 0px 10px rgba(229, 193, 88, 0.4));
         }
 
         .header-section {
-            transform: translateZ(40px);
+            text-align: center;
+            transform: translateZ(50px);
+            margin-bottom: 30px;
         }
 
         h1 {
-            font-size: 1.4rem;
-            margin: 0 0 5px 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            margin: 0 0 8px 0;
             color: #ffffff;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
         }
 
         h2 {
-            font-size: 0.85rem;
-            margin: 0 0 25px 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            margin: 0;
             color: var(--accent-green);
-            font-weight: normal;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .divider {
@@ -104,30 +113,31 @@
             height: 1px;
             background-color: var(--border-dim);
             margin: 25px 0;
-            transform: translateZ(20px);
+            transform: translateZ(30px);
         }
 
         .data-section {
-            transform: translateZ(30px);
+            transform: translateZ(40px);
+            font-family: 'Space Mono', monospace;
         }
 
         .data-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .data-label { color: var(--text-muted); }
-        .data-value { text-align: right; color: var(--text-main); font-weight: bold; }
+        .data-value { text-align: right; color: var(--text-main); font-weight: 700; }
 
         .links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             margin-top: 35px;
-            transform: translateZ(40px);
+            transform: translateZ(50px);
         }
 
         a.button {
@@ -137,40 +147,43 @@
             color: var(--bg-color);
             background-color: var(--accent-green);
             padding: 14px;
-            font-weight: bold;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 255, 65, 0.15);
         }
 
         a.button:hover {
             background-color: #ffffff;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.6);
             transform: scale(1.02);
         }
 
         a.button-outline {
-            background-color: rgba(0, 255, 65, 0.05);
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
+            background-color: rgba(255, 255, 255, 0.02);
+            color: var(--text-main);
+            border: 1px solid var(--border-dim);
             box-shadow: none;
         }
 
         a.button-outline:hover {
-            background-color: var(--accent-green);
+            background-color: var(--hazard-yellow);
             color: var(--bg-color);
+            border-color: var(--hazard-yellow);
         }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 35px;
             text-align: center;
-            font-size: 0.7rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transform: translateZ(20px);
+            letter-spacing: 2.5px;
+            transform: translateZ(25px);
         }
 
         .blink { animation: blinker 1s linear infinite; }
@@ -184,13 +197,12 @@
     <div class="card-container" id="tilt-card">
         
         <div class="logo-container">
-            <!-- Ensure zero-point-logo.svg is uploaded to the root of your GitHub Pages repo -->
             <img src="zero-point-logo.svg" alt="MONAD EDGE Logo">
         </div>
 
         <div class="header-section">
             <h1>Jesse DeWayne McCready</h1>
-            <h2>Principal Architect, CEO</h2>
+            <h2>Principal Architect / CEO</h2>
         </div>
         
         <div class="data-section">
@@ -208,7 +220,7 @@
             </div>
             <div class="data-row">
                 <span class="data-label">IP STATUS:</span>
-                <span class="data-value">Prov. App. 64/007,869</span>
+                <span class="data-value">Prov. 64/007,869</span>
             </div>
         </div>
         
@@ -230,14 +242,11 @@
         const card = document.getElementById('tilt-card');
         const body = document.querySelector('body');
 
-        // Dynamic 3D tilt effect
         function handleMove(e) {
             let clientX = e.touches ? e.touches[0].clientX : e.clientX;
             let clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
             let xAxis = (window.innerWidth / 2 - clientX) / 25;
             let yAxis = (window.innerHeight / 2 - clientY) / 25;
-            
             card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
         }
 
@@ -250,12 +259,9 @@
             card.style.transition = 'none';
         }
 
-        // Mouse events for desktop
         body.addEventListener('mousemove', handleMove);
         body.addEventListener('mouseleave', handleLeave);
         body.addEventListener('mouseenter', handleEnter);
-
-        // Touch events for mobile
         body.addEventListener('touchmove', handleMove);
         body.addEventListener('touchend', handleLeave);
         body.addEventListener('touchstart', handleEnter);
