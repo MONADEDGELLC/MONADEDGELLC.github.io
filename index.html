@@ -13,11 +13,20 @@ body{background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui
  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
  background-size:48px 48px;background-position:-1px -1px;
  padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));display:flex;justify-content:center}
+body::after{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 3px)}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,transparent 0,var(--bg) 75%);pointer-events:none}
-.card{position:relative;width:100%;max-width:460px;background:linear-gradient(180deg,#131315,var(--panel));border:1px solid var(--line);border-radius:6px;padding:28px 26px;align-self:flex-start;box-shadow:0 30px 80px -30px #000}
-.card::before,.card::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--acc)}
-.card::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
-.card::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.card{position:relative;width:100%;max-width:460px;background:linear-gradient(180deg,#0e0e10cc,#0a0a0bcc);padding:34px 30px;align-self:flex-start}
+.card::before,.card::after{content:"";position:absolute;inset:0;pointer-events:none;--b:var(--acc);--l:26px;--t:2px}
+.card::before{background:
+ linear-gradient(var(--b),var(--b)) 0 0/var(--l) var(--t) no-repeat,
+ linear-gradient(var(--b),var(--b)) 0 0/var(--t) var(--l) no-repeat,
+ linear-gradient(var(--b),var(--b)) 100% 0/var(--l) var(--t) no-repeat,
+ linear-gradient(var(--b),var(--b)) 100% 0/var(--t) var(--l) no-repeat}
+.card::after{background:
+ linear-gradient(var(--b),var(--b)) 0 100%/var(--l) var(--t) no-repeat,
+ linear-gradient(var(--b),var(--b)) 0 100%/var(--t) var(--l) no-repeat,
+ linear-gradient(var(--b),var(--b)) 100% 100%/var(--l) var(--t) no-repeat,
+ linear-gradient(var(--b),var(--b)) 100% 100%/var(--t) var(--l) no-repeat}
 .top{padding-bottom:14px;border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--acc),var(--silver) 50%,transparent) 1;display:flex;justify-content:space-between;align-items:center;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:8px;box-shadow:0 0 10px var(--acc);animation:p 2.4s infinite}
 @keyframes p{50%{opacity:.35}}
@@ -26,19 +35,21 @@ h1{font-size:28px;font-weight:600;letter-spacing:-.01em;background:linear-gradie
 .role{margin-top:4px;color:var(--acc);font:13px ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
 .tag{margin-top:14px;color:var(--mute);font-size:14px}
 .tag b{color:var(--ink);font-weight:500}
-.grid{margin-top:22px;border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:1fr 1fr}
+.grid{margin-top:22px;border:1px solid var(--line);border-radius:0;display:grid;grid-template-columns:1fr 1fr}
 .grid div{padding:11px 14px;border-bottom:1px solid var(--line);font:12px ui-monospace,Menlo,monospace}
 .grid div:nth-child(odd){border-right:1px solid var(--line)}
 .grid div:nth-last-child(-n+2){border-bottom:0}
 .grid span{display:block;color:var(--mute);font-size:10px;letter-spacing:.16em;margin-bottom:2px}
 .grid .wide{grid-column:1/-1;border-right:0!important}
 .btns{margin-top:22px;display:grid;gap:10px}
-.btn{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:1px solid var(--line);border-radius:4px;color:var(--ink);text-decoration:none;font-size:14px;transition:.2s}
+.btn{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:1px solid var(--line);border-radius:0;color:var(--ink);text-decoration:none;font-size:14px;transition:.2s}
 .btn:hover,.btn:focus-visible{border-color:var(--acc);background:#d4af370d;outline:0}
 .btn.p{background:linear-gradient(180deg,var(--gold2),var(--acc));color:#1a1405;border-color:var(--acc);font-weight:600}
 .btn.p:hover{filter:brightness(1.1)}
 .btn i{font:normal 12px ui-monospace,Menlo,monospace;opacity:.6}
 .foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
+.grid b{font-weight:400}
+.tele{margin-top:10px;font:9px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#5d6066;text-align:center;font-variant-numeric:tabular-nums}
 @media(prefers-reduced-motion:reduce){.dot{animation:none}}
 </style>
 </head>
@@ -47,13 +58,13 @@ h1{font-size:28px;font-weight:600;letter-spacing:-.01em;background:linear-gradie
   <div class="top"><span><i class="dot"></i>SYS.STATUS: ONLINE</span><span>MONAD EDGE</span></div>
 
   <img class="logo" src="zero-point-logo.svg" alt="Monad Edge logo">
-  <h1>Jesse DeWayne McCready</h1>
+  <h1 class="decode-text">Jesse DeWayne McCready</h1>
   <div class="role">Principal Architect / CEO</div>
   <p class="tag">Founder of <b>MONAD EDGE LLC</b>. Developer of <b>Zero-Entropy Topology (Z.E.T.)</b>.</p>
 
   <div class="grid">
-    <div><span>CAGE</span>243J6</div>
-    <div><span>UEI</span>YE9ZHNXRY2N8</div>
+    <div><span>CAGE</span><b class="decode-text">243J6</b></div>
+    <div><span>UEI</span><b class="decode-text">YE9ZHNXRY2N8</b></div>
     <div class="wide"><span>IP STATUS</span>Provisional Patent 64/007,869</div>
   </div>
 
@@ -65,6 +76,33 @@ h1{font-size:28px;font-weight:600;letter-spacing:-.01em;background:linear-gradie
 
 
   <div class="foot"><span>NO TRACKERS</span><span>NO SUBSCRIPTIONS</span><span>SELF-HOSTED</span></div>
+  <div class="tele" id="tele" aria-hidden="true"></div>
 </main>
+<script>
+(function(){
+  var pool="ABCDEF0123456789@#$%&*",DUR=400,FRAME=30;
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".decode-text").forEach(function(el){
+    var txt=el.textContent;
+    el.setAttribute("aria-label",txt);
+    if(reduce)return;
+    var t0=performance.now();
+    (function tick(now){
+      var p=Math.min((now-t0)/DUR,1),lock=Math.floor(p*txt.length),out="";
+      for(var i=0;i<txt.length;i++){
+        var c=txt[i];
+        out+=(c===" "||i<lock)?c:pool[Math.floor(Math.random()*pool.length)];
+      }
+      el.textContent=out;
+      if(p<1)setTimeout(function(){tick(performance.now())},FRAME);else el.textContent=txt;
+    })(t0);
+  });
+  var tele=document.getElementById("tele");
+  function upd(){
+    tele.textContent="EPOCH "+Math.floor(Date.now()/1000)+" | "+screen.width+"x"+screen.height+" @"+(window.devicePixelRatio||1)+"x";
+  }
+  upd();setInterval(upd,1000);
+})();
+</script>
 </body>
 </html>
