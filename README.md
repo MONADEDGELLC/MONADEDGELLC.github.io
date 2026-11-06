@@ -11,7 +11,7 @@
 This repository serves strictly as the public-facing digital artifact and routing endpoint for MONAD EDGE LLC. It hosts a zero-dependency, self-contained, gyroscope-reactive spatial interface designed to deliver verified corporate and federal procurement data.
 
 ### SECURITY & IP NOTICE
-**This is an edge node.** No core proprietary architecture, raw algorithmic data, or thermodynamic routing logic concerning the **Zero-Entropy Topology (Z.E.T.)** or the **$V = 1/D^2$** viability function is hosted on this network or within this repository. 
+**This is an edge node.** No core proprietary architecture, raw algorithmic data, or thermodynamic routing logic concerning the **Zero-Entropy Topology (Z.E.T.)** or the viability function is hosted on this network or within this repository. 
 
 All primary research and development IP is air-gapped and maintained on physically sovereign, encrypted hardware. 
 
