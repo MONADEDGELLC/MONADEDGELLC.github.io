@@ -1,270 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONAD EDGE LLC | Jesse DeWayne McCready</title>
-    <!-- Importing Google Fonts for industrial/tech aesthetic -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #030303;
-            --text-main: #f0f0f0;
-            --accent-green: #00ff41;
-            --hazard-yellow: #e5c158; /* Off-white / industrial warning tone */
-            --hazard-dark: #121212;
-            --border-dim: #222222;
-            --text-muted: #777777;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-            perspective: 1000px;
-        }
-
-        .ambient-glow {
-            position: absolute;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(229,193,88,0.03) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .card-container {
-            width: 90%;
-            max-width: 440px;
-            border: 1px solid var(--border-dim);
-            padding: 45px 35px;
-            background: linear-gradient(135deg, rgba(15,15,15,0.95) 100%, rgba(5,5,5,0.98) 0%);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 255, 65, 0.03);
-            position: relative;
-            z-index: 1;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Industrial Hazard Stripe Top Border (Warehouse Cordon Style) */
-        .card-container::before {
-            content: '';
-            position: absolute;
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 6px;
-            background: repeating-linear-gradient(
-                -45deg,
-                var(--hazard-yellow),
-                var(--hazard-yellow) 12px,
-                var(--hazard-dark) 12px,
-                var(--hazard-dark) 24px
-            );
-            transform: translateZ(2px);
-        }
-
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px;
-            transform: translateZ(60px);
-        }
-
-        .logo-container img {
-            height: 65px;
-            filter: invert(1) drop-shadow(0px 0px 10px rgba(229, 193, 88, 0.4));
-        }
-
-        .header-section {
-            text-align: center;
-            transform: translateZ(50px);
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-family: 'Space Mono', monospace;
-            font-size: 1.3rem;
-            margin: 0 0 8px 0;
-            color: #ffffff;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            margin: 0;
-            color: var(--accent-green);
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .divider {
-            width: 100%;
-            height: 1px;
-            background-color: var(--border-dim);
-            margin: 25px 0;
-            transform: translateZ(30px);
-        }
-
-        .data-section {
-            transform: translateZ(40px);
-            font-family: 'Space Mono', monospace;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 14px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .data-label { color: var(--text-muted); }
-        .data-value { text-align: right; color: var(--text-main); font-weight: 700; }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 35px;
-            transform: translateZ(50px);
-        }
-
-        a.button {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: var(--bg-color);
-            background-color: var(--accent-green);
-            padding: 14px;
-            font-family: 'Space Mono', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 20px rgba(0, 255, 65, 0.15);
-        }
-
-        a.button:hover {
-            background-color: #ffffff;
-            box-shadow: 0 0 25px rgba(0, 255, 65, 0.6);
-            transform: scale(1.02);
-        }
-
-        a.button-outline {
-            background-color: rgba(255, 255, 255, 0.02);
-            color: var(--text-main);
-            border: 1px solid var(--border-dim);
-            box-shadow: none;
-        }
-
-        a.button-outline:hover {
-            background-color: var(--hazard-yellow);
-            color: var(--bg-color);
-            border-color: var(--hazard-yellow);
-        }
-
-        .footer {
-            margin-top: 35px;
-            text-align: center;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            transform: translateZ(25px);
-        }
-
-        .blink { animation: blinker 1s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MONAD EDGE LLC | Jesse DeWayne McCready</title>
+<meta name="theme-color" content="#050505">
+<style>
+:root{--bg:#050505;--panel:#0a0a0b;--line:#25262a;--ink:#e9eaec;--mute:#8d9096;--acc:#d4af37;--gold2:#f0d77a;--silver:#c4c7cc}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+ background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+ background-size:48px 48px;background-position:-1px -1px;
+ padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));display:flex;justify-content:center}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,transparent 0,var(--bg) 75%);pointer-events:none}
+.card{position:relative;width:100%;max-width:460px;background:linear-gradient(180deg,#131315,var(--panel));border:1px solid var(--line);border-radius:6px;padding:28px 26px;align-self:flex-start;box-shadow:0 30px 80px -30px #000}
+.card::before,.card::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--acc)}
+.card::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.card::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.top{padding-bottom:14px;border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--acc),var(--silver) 50%,transparent) 1;display:flex;justify-content:space-between;align-items:center;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:8px;box-shadow:0 0 10px var(--acc);animation:p 2.4s infinite}
+@keyframes p{50%{opacity:.35}}
+.logo{display:block;width:84px;height:84px;margin:26px 0 18px;filter:drop-shadow(0 0 18px #d4af3730)}
+h1{font-size:28px;font-weight:600;letter-spacing:-.01em;background:linear-gradient(180deg,#fff 0,var(--silver) 55%,#8d9096 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{margin-top:4px;color:var(--acc);font:13px ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.tag{margin-top:14px;color:var(--mute);font-size:14px}
+.tag b{color:var(--ink);font-weight:500}
+.grid{margin-top:22px;border:1px solid var(--line);border-radius:4px;display:grid;grid-template-columns:1fr 1fr}
+.grid div{padding:11px 14px;border-bottom:1px solid var(--line);font:12px ui-monospace,Menlo,monospace}
+.grid div:nth-child(odd){border-right:1px solid var(--line)}
+.grid div:nth-last-child(-n+2){border-bottom:0}
+.grid span{display:block;color:var(--mute);font-size:10px;letter-spacing:.16em;margin-bottom:2px}
+.grid .wide{grid-column:1/-1;border-right:0!important}
+.btns{margin-top:22px;display:grid;gap:10px}
+.btn{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:1px solid var(--line);border-radius:4px;color:var(--ink);text-decoration:none;font-size:14px;transition:.2s}
+.btn:hover,.btn:focus-visible{border-color:var(--acc);background:#d4af370d;outline:0}
+.btn.p{background:linear-gradient(180deg,var(--gold2),var(--acc));color:#1a1405;border-color:var(--acc);font-weight:600}
+.btn.p:hover{filter:brightness(1.1)}
+.btn i{font:normal 12px ui-monospace,Menlo,monospace;opacity:.6}
+.qr{margin-top:26px;text-align:center}
+.qr .frame{display:inline-block;background:#fff;padding:12px;border-radius:4px;position:relative}
+.qr img{display:block;width:170px;height:170px}
+.qr p{margin-top:10px;font:10px ui-monospace,Menlo,monospace;letter-spacing:.2em;color:var(--mute)}
+.foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
+@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+</style>
 </head>
 <body>
+<main class="card">
+  <div class="top"><span><i class="dot"></i>SYS.STATUS: ONLINE</span><span>MONAD EDGE</span></div>
 
-    <div class="ambient-glow"></div>
+  <img class="logo" src="zero-point-logo.svg" alt="Monad Edge logo">
+  <h1>Jesse DeWayne McCready</h1>
+  <div class="role">Principal Architect / CEO</div>
+  <p class="tag">Founder of <b>MONAD EDGE LLC</b>. Developer of <b>Zero-Entropy Topology (Z.E.T.)</b>.</p>
 
-    <div class="card-container" id="tilt-card">
-        
-        <div class="logo-container">
-            <img src="zero-point-logo.svg" alt="MONAD EDGE Logo">
-        </div>
+  <div class="grid">
+    <div><span>CAGE</span>243J6</div>
+    <div><span>UEI</span>YE9ZHNXRY2N8</div>
+    <div class="wide"><span>IP STATUS</span>Provisional Patent 64/007,869</div>
+  </div>
 
-        <div class="header-section">
-            <h1>Jesse DeWayne McCready</h1>
-            <h2>Principal Architect / CEO</h2>
-        </div>
-        
-        <div class="data-section">
-            <div class="data-row">
-                <span class="data-label">ENTITY:</span>
-                <span class="data-value">MONAD EDGE LLC</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">CAGE:</span>
-                <span class="data-value">243J6</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">UEI:</span>
-                <span class="data-value">YE9ZHNXRY2N8</span>
-            </div>
-            <div class="data-row">
-                <span class="data-label">IP STATUS:</span>
-                <span class="data-value">Prov. 64/007,869</span>
-            </div>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <div class="links">
-            <a href="mailto:jesse.mccready@example.com" class="button">Initiate Contact</a>
-            <a href="https://github.com/MONADEDGELLC" class="button button-outline" target="_blank">MONAD EDGE GitHub</a>
-            <a href="https://www.linkedin.com/in/jesse-mccready-893b52245/" class="button button-outline" target="_blank">LinkedIn Network</a>
-        </div>
-        
-        <div class="footer">
-            <span id="sys-status">SYS.STATUS: ONLINE<span class="blink">_</span></span><br><br>
-            ZERO-ENTROPY TOPOLOGY (Z.E.T.)
-        </div>
-    </div>
+  <nav class="btns">
+    <a class="btn p" href="mailto:jesse.mccready@example.com">Initiate Contact <i>&rarr;</i></a>
+    <a class="btn" href="https://github.com/MONADEDGELLC">GitHub <i>/MONADEDGELLC</i></a>
+    <a class="btn" href="https://www.linkedin.com/in/jesse-mccready-893b52245/">LinkedIn <i>/in/jesse-mccready</i></a>
+  </nav>
 
-    <script>
-        const card = document.getElementById('tilt-card');
-        const body = document.querySelector('body');
+  <div class="qr">
+    <div class="frame"><img src="MONAD_EDGE_qr-code.svg" alt="QR code to this page"></div>
+    <p>SCAN TO SHARE</p>
+  </div>
 
-        function handleMove(e) {
-            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
-            let clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            let xAxis = (window.innerWidth / 2 - clientX) / 25;
-            let yAxis = (window.innerHeight / 2 - clientY) / 25;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        }
-
-        function handleLeave() {
-            card.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
-            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
-        }
-
-        function handleEnter() {
-            card.style.transition = 'none';
-        }
-
-        body.addEventListener('mousemove', handleMove);
-        body.addEventListener('mouseleave', handleLeave);
-        body.addEventListener('mouseenter', handleEnter);
-        body.addEventListener('touchmove', handleMove);
-        body.addEventListener('touchend', handleLeave);
-        body.addEventListener('touchstart', handleEnter);
-    </script>
+  <div class="foot"><span>NO TRACKERS</span><span>NO SUBSCRIPTIONS</span><span>SELF-HOSTED</span></div>
+</main>
 </body>
 </html>
