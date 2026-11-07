@@ -3,339 +3,301 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MONAD EDGE LLC | Thermal Supremacy at the Edge</title>
-<meta name="description" content="MONAD EDGE LLC is a deep tech R&D firm in Shreveport, Louisiana, building Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for SWaP-constrained edge computing.">
-<meta name="theme-color" content="#06080b">
+<meta name="color-scheme" content="dark">
+<script>document.documentElement.classList.add("js")</script>
+<meta name="theme-color" content="#000000">
+<title>MONAD EDGE LLC | Thermodynamic Edge Computing</title>
+<meta name="description" content="MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana, developing Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for SWaP-constrained edge computing.">
 <!-- Ghost mode: uncomment to ask search engines not to index the site -->
 <!-- <meta name="robots" content="noindex, nofollow"> -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2306080b'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23cfd8e0' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23cfd8e0'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23f2f5f8' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23f2f5f8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Unbounded:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --void:#06080b;
-  --graphite:#0d1116;
-  --steel:#8d9aa8;
-  --chrome-hi:#f4f8fb;
-  --chrome-lo:#6c7b8a;
-  --ice:#9fd3ff;
-  --line:rgba(190,210,230,.16);
+  --bg:#000;
   --text:#c9d3dd;
-  --text-dim:#7f8b97;
-  --mx:50%;--my:30%;
-  --display:'Unbounded','Arial Black',system-ui,sans-serif;
-  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --head:#f2f5f8;
+  --dim:#7d8894;
+  --rule:rgba(201,211,221,.18);
+  --passed-opacity:.12; /* set to 0 for full vanish as you scroll past */
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:5rem}
+html{scroll-behavior:smooth}
 body{
-  min-height:100vh;
-  background:
-    radial-gradient(60rem 36rem at var(--mx) var(--my),rgba(159,211,255,.10),transparent 60%),
-    radial-gradient(40rem 30rem at 90% 100%,rgba(141,154,168,.10),transparent 60%),
-    var(--void);
-  color:var(--text);
-  font-family:var(--body);
-  font-weight:300;
-  line-height:1.65;
+  background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;
   -webkit-font-smoothing:antialiased;
-  padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0);
-}
-body::before{ /* fine grid */
-  content:"";position:fixed;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse at 50% 20%,#000 0%,transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000 0%,transparent 70%);
-  opacity:.35;
-}
-.scan{ /* scanline overlay */
-  position:fixed;inset:0;pointer-events:none;z-index:50;
-  background:repeating-linear-gradient(to bottom,rgba(255,255,255,.028) 0,rgba(255,255,255,.028) 1px,transparent 1px,transparent 3px);
-  mix-blend-mode:screen;
+  padding-left:env(safe-area-inset-left,0);padding-right:env(safe-area-inset-right,0);
 }
 a{color:inherit}
-:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+:focus-visible{outline:2px solid var(--head);outline-offset:4px}
+.wrap{width:min(1080px,100% - 3rem);margin-inline:auto}
 
-.wrap{width:min(1040px,100% - 2.5rem);margin-inline:auto;position:relative}
-
-/* header */
-header{display:flex;align-items:center;justify-content:space-between;padding:1.6rem 0}
-.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;font-family:var(--display);font-weight:500;font-size:.8rem;letter-spacing:.14em;color:var(--chrome-hi)}
-.brand svg{width:30px;height:30px}
-nav{display:flex;gap:1.8rem;font-family:var(--mono);font-size:.78rem}
-nav a{text-decoration:none;color:var(--text-dim);padding:.3rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
-nav a:hover{color:var(--chrome-hi);border-color:var(--steel)}
-
-/* floating glass panel with HUD corner brackets */
-.panel{
-  position:relative;
-  padding:clamp(1.6rem,4vw,3.4rem);
-  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015) 45%,rgba(159,211,255,.05));
-  border:1px solid var(--line);
-  border-radius:18px;
-  backdrop-filter:blur(18px) saturate(140%);
-  -webkit-backdrop-filter:blur(18px) saturate(140%);
-  box-shadow:0 30px 80px -30px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.12);
-  transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
-  transition:transform .25s ease-out;
+/* fixed header */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:10;
+  padding:calc(1.4rem + env(safe-area-inset-top,0px)) 0 2.2rem;
+  background:linear-gradient(#000 35%,rgba(0,0,0,0));
 }
-.panel::before{ /* holo-foil edge sheen */
-  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(115deg,transparent 30%,rgba(159,211,255,.10) 45%,rgba(255,255,255,.12) 50%,rgba(190,170,255,.08) 55%,transparent 70%);
-  background-size:250% 100%;background-position:var(--sheen,100%) 0;
-  transition:background-position .25s ease-out;
-}
-.br{position:absolute;width:22px;height:22px;border-color:var(--steel);border-style:solid;border-width:0;opacity:.9}
-.br.tl{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px;border-top-left-radius:18px}
-.br.tr{top:-1px;right:-1px;border-top-width:2px;border-right-width:2px;border-top-right-radius:18px}
-.br.bl{bottom:-1px;left:-1px;border-bottom-width:2px;border-left-width:2px;border-bottom-left-radius:18px}
-.br.brr{bottom:-1px;right:-1px;border-bottom-width:2px;border-right-width:2px;border-bottom-right-radius:18px}
+header .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--head);font-weight:500;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase}
+.brand svg{height:38px;width:auto;flex:none;display:block}
+nav{display:flex;gap:2rem}
+.js header{opacity:0;visibility:hidden;transition:opacity 1.2s ease-out,visibility 0s linear 1.2s}
+.js header.show{opacity:1;visibility:visible;transition:opacity 1.2s ease-out,visibility 0s}
+nav a{text-decoration:none;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:color .3s}
+nav a:hover{color:var(--head)}
 
-.status{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.76rem;color:var(--text-dim);margin-bottom:2rem}
-.status i{width:7px;height:7px;border-radius:50%;background:var(--ice);box-shadow:0 0 10px var(--ice);animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{50%{opacity:.35}}
+/* scenes */
+.scene{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(7rem,18vh,11rem) 0 clamp(5rem,14vh,9rem);border-top:1px solid transparent}
+.label{display:flex;align-items:center;gap:1rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:2.2rem}
+.label::before{content:"";width:44px;height:1px;background:var(--dim)}
+h1,h2{font-weight:300;color:var(--head);letter-spacing:-.02em}
+h1{font-size:clamp(2.5rem,6.4vw,5.2rem);line-height:1.04;max-width:14ch}
+h2{font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.1;max-width:20ch}
+.lede{max-width:56ch;margin-top:2.2rem;font-size:1.15rem}
+#overview .lede,#overview .actions{margin-top:clamp(5rem,24vh,12rem)}
+p.body{max-width:60ch;margin-top:clamp(2.4rem,9vh,5rem)}
 
-h1{
-  font-family:var(--display);font-weight:500;
-  font-size:clamp(1.9rem,5.4vw,3.9rem);line-height:1.08;letter-spacing:-.01em;
-  max-width:16ch;
-  background:linear-gradient(175deg,var(--chrome-hi) 0%,#c3cfda 38%,var(--chrome-lo) 55%,#dfe7ee 78%,#9aa8b6 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 2px 18px rgba(159,211,255,.16));
-}
-.lede{max-width:58ch;margin-top:1.8rem;font-size:1.08rem;color:var(--text)}
-.actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.4rem}
+.actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:3rem}
 .btn{
-  font-family:var(--mono);font-size:.82rem;text-decoration:none;
-  padding:.85rem 1.4rem;border-radius:10px;border:1px solid var(--line);
-  color:var(--chrome-hi);background:rgba(255,255,255,.04);
-  transition:background .2s,border-color .2s,transform .2s;
+  display:inline-block;text-decoration:none;font-weight:400;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:1.05rem 1.9rem;color:var(--head);border:1px solid rgba(242,245,248,.5);background:transparent;
+  transition:background .3s,color .3s,border-color .3s;
 }
-.btn:hover{background:rgba(159,211,255,.12);border-color:var(--ice);transform:translateY(-2px)}
-.btn.solid{background:linear-gradient(180deg,#e9eff4,#9eacba);color:#0a0d11;border-color:transparent;font-weight:500}
-.btn.solid:hover{background:linear-gradient(180deg,#fff,#b4c2cf)}
+.btn:hover{background:var(--head);color:#000;border-color:var(--head)}
+.btn.solid{background:var(--head);color:#000;border-color:var(--head)}
+.btn.solid:hover{background:transparent;color:var(--head)}
 
-#hero{overflow:hidden;min-height:min(78vh,640px);display:flex;flex-direction:column;justify-content:center}
-#hero h1{font-size:clamp(2.2rem,6.6vw,4.9rem);max-width:12ch;position:relative}
-#hero .lede,#hero .actions,#hero .status{position:relative}
-.emblem{position:absolute;right:-6%;top:50%;width:min(52%,520px);transform:translateY(-50%);pointer-events:none;opacity:.95}
-.emblem .r1{transform-origin:200px 200px;animation:spin 60s linear infinite}
-.emblem .r2{transform-origin:200px 200px;animation:spin 90s linear infinite reverse}
-.emblem .r3{transform-origin:200px 200px;animation:spin 140s linear infinite}
-.emblem .core{transform-origin:200px 200px;animation:core 4.5s ease-in-out infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes core{50%{transform:scale(1.18);opacity:.75}}
-.doctrine{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem;margin-top:2.4rem;padding-top:2rem;border-top:1px solid var(--line)}
-.doctrine h3{font-family:var(--display);font-weight:500;font-size:1rem;color:var(--chrome-hi);margin-bottom:.6rem;line-height:1.3}
-.doctrine p{font-size:.95rem;color:var(--text-dim)}
-section{margin-top:clamp(3rem,8vw,6rem)}
-h2{font-family:var(--display);font-weight:300;font-size:clamp(1.3rem,3vw,2rem);color:var(--chrome-hi);letter-spacing:-.005em;line-height:1.2}
-h2 small{display:block;font-family:var(--mono);font-weight:400;font-size:.78rem;color:var(--text-dim);letter-spacing:0;margin-bottom:.9rem}
-.panel p{max-width:62ch}
-.panel h2 + p{margin-top:1.2rem}
+dl{display:grid;grid-template-columns:minmax(140px,240px) 1fr;margin-top:clamp(4rem,16vh,8rem);border-top:1px solid var(--rule)}
+dt,dd{padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+dt{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding-right:1.5rem;line-height:1.7}
+dd{color:var(--head);font-size:1.05rem;font-weight:400;line-height:1.7}
 
-dl{display:grid;grid-template-columns:minmax(120px,200px) 1fr;margin-top:2.2rem;border-top:1px solid var(--line)}
-dt,dd{padding:1rem 0;border-bottom:1px solid var(--line)}
-dt{font-family:var(--mono);font-size:.8rem;color:var(--text-dim);padding-right:1rem}
-dd{color:var(--chrome-hi)}
-dd .tag{font-family:var(--mono);font-size:.82rem;color:var(--ice)}
+.doctrine{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.5rem;margin-top:clamp(4rem,16vh,8rem)}
+.doctrine h3{font-weight:500;font-size:1rem;color:var(--head);margin-bottom:.6rem}
+.doctrine p{font-size:.95rem;color:var(--dim)}
 
-.contact-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.6rem;margin-top:2rem}
-.contact-row a{display:block;text-decoration:none;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:12px;transition:border-color .2s,background .2s}
-.contact-row a:hover{border-color:var(--ice);background:rgba(159,211,255,.06)}
-.contact-row span{display:block;font-family:var(--mono);font-size:.76rem;color:var(--text-dim)}
-.contact-row b{font-weight:400;color:var(--chrome-hi);word-break:break-word}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;margin-top:clamp(4rem,16vh,8rem)}
+.links a{display:block;text-decoration:none;padding-bottom:1.1rem;border-bottom:1px solid var(--rule);transition:border-color .3s}
+.links a:hover{border-color:var(--head)}
+.links span{display:block;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem}
+.links b{font-weight:300;font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--head);word-break:break-word}
 
-/* telemetry footer */
-footer{margin-top:clamp(3rem,8vw,6rem);border-top:1px solid var(--line);padding:1.4rem 0 2.4rem;font-family:var(--mono);font-size:.74rem;color:var(--text-dim)}
-.telemetry{display:flex;flex-wrap:wrap;gap:.6rem 2rem}
-.telemetry b{font-weight:400;color:var(--ice)}
-.legal{margin-top:1rem}
+footer{border-top:1px solid var(--rule);padding:2rem 0 calc(2.2rem + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem}
+
+/* The reveal: hidden in deep shadow, fluidly coalescing */
+.classified-reveal,.split .w{
+  opacity:0;
+  filter:blur(16px);
+  transform:translateY(15px);
+  transition:opacity 1.8s ease-out,filter 1.8s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1),text-shadow 1.8s ease-out;
+  text-shadow:0 0 30px rgba(201,211,221,0); /* invisible glow */
+}
+.classified-reveal{transition-delay:var(--d,0s);will-change:opacity,filter,transform,text-shadow}
+.split .w{display:inline-block;transition-delay:var(--wd,0s)}
+
+/* Active: glowing, slightly soft, bleeding into the void */
+.classified-reveal.in-view,.split.in-view .w{
+  opacity:.9; /* never hits 100% solid */
+  filter:blur(.4px); /* micro-blur prevents harsh vector edges */
+  transform:translateY(0);
+  text-shadow:0 0 12px rgba(201,211,221,.25),0 0 24px rgba(201,211,221,.15); /* phosphor bleed */
+}
+
+/* Passed: sinking back into the fog */
+.classified-reveal.passed-view,.split.passed-view .w{
+  opacity:var(--passed-opacity);
+  filter:blur(12px);
+  transform:translateY(-15px);
+  transition-delay:0s;
+  text-shadow:0 0 30px rgba(201,211,221,0);
+}
+
+/* Landing: just the logo, small, sitting in the dark */
+.landing{align-items:center}
+.landing .wrap{display:flex;justify-content:center}
+.landing .mark{height:56px;width:auto;display:block}
+.landing .classified-reveal{filter:blur(16px) drop-shadow(0 0 0 rgba(201,211,221,0));transition-duration:3.2s}
+.landing .classified-reveal.in-view{filter:blur(.4px) drop-shadow(0 0 16px rgba(201,211,221,.35))}
+.landing .classified-reveal.passed-view{filter:blur(12px) drop-shadow(0 0 0 rgba(201,211,221,0))}
+
+/* Buttons and links keep their hover transitions, with no hover lag from the reveal delay */
+.btn.classified-reveal{
+  transition:opacity 1.8s ease-out,filter 1.8s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1),text-shadow 1.8s ease-out,background .3s,color .3s,border-color .3s;
+  transition-delay:var(--d,0s),var(--d,0s),var(--d,0s),var(--d,0s),0s,0s,0s;
+}
+.links a.classified-reveal{
+  transition:opacity 1.8s ease-out,filter 1.8s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1),text-shadow 1.8s ease-out,border-color .3s;
+  transition-delay:var(--d,0s),var(--d,0s),var(--d,0s),var(--d,0s),0s;
+}
+.btn.classified-reveal.in-view,.btn.classified-reveal.passed-view{text-shadow:none}
+.btn.classified-reveal.passed-view,.links a.classified-reveal.passed-view{transition-delay:0s}
 
 @media (max-width:640px){
-  nav{gap:1.1rem}
-  .emblem{right:-30%;width:90%;opacity:.28}
+  body{font-size:16px}
+  nav{gap:.9rem}
+  nav a{font-size:.66rem;letter-spacing:.12em}
+  .brand{font-size:.7rem;letter-spacing:.16em;gap:.7rem}
+  .brand svg{height:32px}
+  .landing .mark{height:48px}
   dl{grid-template-columns:1fr}
   dt{border-bottom:0;padding-bottom:0}
+  dd{padding-top:.4rem}
+  .classified-reveal,.split .w{filter:blur(10px)}
+  .classified-reveal.passed-view,.split.passed-view .w{filter:blur(8px)}
+}
+@media (max-width:520px){
+  nav{display:none}
+  .brand{font-size:.74rem;letter-spacing:.2em}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .status i{animation:none}
-  .emblem *{animation:none!important}
-  .panel,.panel::before{transition:none}
+  .js header,.js header.show{transition:none}
+  .landing .classified-reveal,.landing .classified-reveal.passed-view{filter:none}
+  .classified-reveal,.classified-reveal.passed-view,.split .w,.split.passed-view .w{opacity:1;filter:none;transform:none;transition:none;text-shadow:none}
 }
 </style>
 </head>
 <body>
-<div class="scan" aria-hidden="true"></div>
 
-<div class="wrap">
-  <header>
+<header>
+  <div class="wrap">
     <a class="brand" href="#top" aria-label="MONAD EDGE LLC home">
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f8fb"/><stop offset=".55" stop-color="#6c7b8a"/><stop offset="1" stop-color="#dfe7ee"/></linearGradient></defs>
-        <circle cx="32" cy="32" r="22" fill="none" stroke="url(#g)" stroke-width="4"/>
-        <circle cx="32" cy="32" r="6" fill="url(#g)"/>
+      <svg viewBox="94 144 212 312" aria-hidden="true">
+        <path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
       </svg>
-      MONAD EDGE
+      MONAD EDGE LLC
     </a>
     <nav aria-label="Primary">
-      <a href="#zet">Z.E.T.</a>
+      <a href="#zet">Technology</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main id="top">
-    <div class="panel" id="hero">
-      <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br brr"></i>
-      <svg class="emblem" viewBox="0 0 400 400" aria-hidden="true">
-        <defs>
-          <linearGradient id="ch" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f8fb"/><stop offset=".5" stop-color="#6c7b8a"/><stop offset="1" stop-color="#dfe7ee"/></linearGradient>
-          <radialGradient id="cg"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#9fd3ff"/><stop offset="1" stop-color="#9fd3ff" stop-opacity="0"/></radialGradient>
-        </defs>
-        <circle class="r3" cx="200" cy="200" r="190" fill="none" stroke="url(#ch)" stroke-width="1" stroke-dasharray="2 9" opacity=".7"/>
-        <circle class="r1" cx="200" cy="200" r="158" fill="none" stroke="url(#ch)" stroke-width="2.5" stroke-dasharray="90 26 6 26"/>
-        <circle class="r2" cx="200" cy="200" r="118" fill="none" stroke="url(#ch)" stroke-width="1.5" stroke-dasharray="3 7"/>
-        <circle cx="200" cy="200" r="78" fill="none" stroke="url(#ch)" stroke-width="3"/>
-        <path d="M200 10v26M200 364v26M10 200h26M364 200h26" stroke="#8d9aa8" stroke-width="2"/>
-        <circle class="core" cx="200" cy="200" r="58" fill="url(#cg)"/>
-        <circle cx="200" cy="200" r="7" fill="#fff"/>
-      </svg>
-      <p class="status"><i></i><span data-scramble>MONAD EDGE LLC / Shreveport, Louisiana</span></p>
-      <h1 data-scramble>Thermal supremacy at the edge.</h1>
-      <p class="lede">MONAD EDGE builds Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for computing where size, weight, and power decide what is possible. Designed, specified, and engineered in-house.</p>
-      <div class="actions">
-        <a class="btn solid" href="#zet">Explore Z.E.T.</a>
-        <a class="btn" href="#contact">Get in touch</a>
+<main>
+  <section class="scene landing" id="top" aria-label="MONAD EDGE LLC">
+    <div class="wrap">
+        <svg class="mark classified-reveal" style="--d:.6s" viewBox="94 144 212 312" role="img" aria-label="MONAD EDGE zero-point logo">
+          <path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+    </div>
+  </section>
+
+  <section class="scene" id="overview">
+    <div class="wrap">
+      <div class="label classified-reveal" style="--d:.1s">01 / Overview</div>
+      <h1 data-split data-d=".3">Thermodynamic execution for the edge.</h1>
+      <p class="lede" data-split data-d=".75">MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana. Its work centers on Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for edge computing.</p>
+      <div class="actions" data-stagger data-d="1.5">
+        <a class="btn solid" href="#zet">Technology</a>
+        <a class="btn" href="#contact">Contact</a>
       </div>
     </div>
+  </section>
 
-    <section id="zet">
-      <div class="panel">
-        <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br brr"></i>
-        <h2><small data-scramble>Flagship technology</small>Zero-Entropy Topology</h2>
-        <p>Z.E.T. is a Layer 1.5 thermodynamic executive for SWaP-constrained edge computing, where every watt and every gram has to justify itself. It is one architecture, developed end to end by MONAD EDGE.</p>
-        <dl>
-          <dt>Class</dt><dd>Thermodynamic executive, Layer 1.5</dd>
-          <dt>Target hardware</dt><dd>NVIDIA Jetson Orin, ARM64</dd>
-          <dt>Environment</dt><dd>SWaP-constrained edge computing</dd>
-          <dt>Maturity</dt><dd><span class="tag">TRL 3</span> &nbsp;Active development</dd>
-          <dt>Origin</dt><dd>Developed in-house by MONAD EDGE LLC</dd>
-        </dl>
-        <div class="doctrine">
-          <div><h3>Thermal first</h3><p>Heat is treated as the governing constraint, not a side effect to be managed after the fact.</p></div>
-          <div><h3>Built for the edge</h3><p>Targeted at ARM64 and NVIDIA Jetson Orin, where there is no room for waste.</p></div>
-          <div><h3>One team, one architecture</h3><p>Specification through implementation stays under one roof.</p></div>
-        </div>
+  <section class="scene" id="zet">
+    <div class="wrap">
+      <div class="label classified-reveal">02 / Technology</div>
+      <h2 data-split data-d=".15">Zero-Entropy Topology (Z.E.T.)</h2>
+      <p class="body" data-split data-d=".5">Z.E.T. is a Layer 1.5 thermodynamic executive for SWaP-constrained edge computing, where every watt and every gram has to justify itself. It is developed end to end by MONAD EDGE.</p>
+      <dl data-stagger data-d=".9">
+        <dt>Class</dt><dd>Thermodynamic executive, Layer 1.5</dd>
+        <dt>Target hardware</dt><dd>NVIDIA Jetson Orin, ARM64</dd>
+        <dt>Environment</dt><dd>SWaP-constrained edge computing</dd>
+        <dt>Maturity</dt><dd>TRL 3, active development</dd>
+        <dt>Origin</dt><dd>Developed in-house by MONAD EDGE LLC</dd>
+      </dl>
+      <div class="doctrine" data-stagger data-d="0">
+        <div><h3>Thermal first</h3><p>Heat is treated as the governing constraint, not a side effect to be managed after the fact.</p></div>
+        <div><h3>Built for the edge</h3><p>Targeted at ARM64 and NVIDIA Jetson Orin, where there is no room for waste.</p></div>
+        <div><h3>One team, one architecture</h3><p>Specification through implementation stays under one roof.</p></div>
       </div>
-    </section>
-
-    <section id="contact">
-      <div class="panel">
-        <i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br brr"></i>
-        <h2><small data-scramble>Inquiries</small>Contact MONAD EDGE</h2>
-        <p>For research collaboration, technical discussion, or general inquiries, reach out through either channel below.</p>
-        <div class="contact-row">
-          <a href="mailto:monadedgellc@gmail.com"><span>Email</span><b>monadedgellc@gmail.com</b></a>
-          <a href="https://www.linkedin.com/company/monad-edge-llc" target="_blank" rel="noopener"><span>LinkedIn</span><b>MONAD EDGE LLC</b></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="telemetry" aria-label="Live session telemetry">
-      <span>UTC <b id="t-utc">--:--:--</b></span>
-      <span>Shreveport <b id="t-local">--:--:--</b></span>
-      <span>Session <b id="t-up">00:00:00</b></span>
-      <span>Viewport <b id="t-vp">--</b></span>
-      <span>Link <b id="t-net">--</b></span>
     </div>
-    <p class="legal">&copy; <span id="yr">2026</span> MONAD EDGE LLC. All rights reserved.</p>
-  </footer>
-</div>
+  </section>
+
+  <section class="scene" id="contact">
+    <div class="wrap">
+      <div class="label classified-reveal">03 / Contact</div>
+      <h2 data-split data-d=".15">Inquiries</h2>
+      <p class="body" data-split data-d=".5">For research collaboration, technical discussion, or general inquiries, contact MONAD EDGE through either channel below.</p>
+      <div class="links" data-stagger data-d=".9">
+        <a href="mailto:monadedgellc@gmail.com"><span>Email</span><b>monadedgellc@gmail.com</b></a>
+        <a href="https://www.linkedin.com/company/monad-edge-llc" target="_blank" rel="noopener"><span>LinkedIn</span><b>MONAD EDGE LLC</b></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr">2026</span> MONAD EDGE LLC</span>
+    <span>Shreveport, Louisiana</span>
+  </div>
+</footer>
 
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var pad = function(n){return String(n).padStart(2,'0')};
-
-  /* decrypt text scramble */
-  var glyphs = '01<>/\\|{}[]#%&*+=~';
-  function scramble(el, delay){
-    var final = el.textContent;
-    if (reduce) return;
-    var len = final.length, start = null, dur = 900 + len * 14;
-    el.setAttribute('aria-label', final);
-    function frame(ts){
-      if (start === null) start = ts;
-      var p = Math.min((ts - start) / dur, 1), out = '';
-      for (var i = 0; i < len; i++){
-        var ch = final[i];
-        if (ch === ' ' || i / len < p * 1.1 - 0.05) out += ch;
-        else out += glyphs[Math.floor(Math.random() * glyphs.length)];
-      }
-      el.textContent = out;
-      if (p < 1) requestAnimationFrame(frame); else { el.textContent = final; el.removeAttribute('aria-label'); }
-    }
-    setTimeout(function(){ requestAnimationFrame(frame); }, delay || 0);
-  }
-  var targets = document.querySelectorAll('[data-scramble]');
-  if ('IntersectionObserver' in window && !reduce){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting){ scramble(e.target, 0); io.unobserve(e.target); }
-      });
-    }, {threshold:.6});
-    targets.forEach(function(t){ io.observe(t); });
-  }
-
-  /* pointer-reactive glass tilt and light */
-  if (!reduce && window.matchMedia('(pointer:fine)').matches){
-    document.addEventListener('pointermove', function(e){
-      var x = e.clientX / innerWidth, y = e.clientY / innerHeight;
-      document.documentElement.style.setProperty('--mx', (x*100)+'%');
-      document.documentElement.style.setProperty('--my', (y*100)+'%');
-    });
-    document.querySelectorAll('.panel').forEach(function(p){
-      p.addEventListener('pointermove', function(e){
-        var r = p.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        p.style.setProperty('--ry', ((x - .5) * 3.5).toFixed(2) + 'deg');
-        p.style.setProperty('--rx', ((.5 - y) * 3.5).toFixed(2) + 'deg');
-        p.style.setProperty('--sheen', (100 - x * 100).toFixed(1) + '%');
-      });
-      p.addEventListener('pointerleave', function(){
-        p.style.setProperty('--ry','0deg'); p.style.setProperty('--rx','0deg'); p.style.setProperty('--sheen','100%');
-      });
-    });
-  }
-
-  /* live telemetry (all values are real, read from the visitor's own browser) */
-  var t0 = Date.now();
-  var fmt = function(tz){
-    try { return new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:tz}).format(new Date()); }
-    catch(e){ return '--:--:--'; }
-  };
-  function tick(){
-    document.getElementById('t-utc').textContent = fmt('UTC');
-    document.getElementById('t-local').textContent = fmt('America/Chicago');
-    var s = Math.floor((Date.now() - t0) / 1000);
-    document.getElementById('t-up').textContent = pad(Math.floor(s/3600)) + ':' + pad(Math.floor(s%3600/60)) + ':' + pad(s%60);
-  }
-  function vp(){
-    document.getElementById('t-vp').textContent = innerWidth + 'x' + innerHeight;
-    var c = navigator.connection;
-    document.getElementById('t-net').textContent = (c && c.effectiveType) ? c.effectiveType : (navigator.onLine ? 'online' : 'offline');
-  }
-  tick(); vp();
-  setInterval(tick, 1000);
-  addEventListener('resize', vp);
-  addEventListener('online', vp); addEventListener('offline', vp);
   document.getElementById('yr').textContent = new Date().getFullYear();
+  var hdr = document.querySelector('header');
+  function hdrState(){ hdr.classList.toggle('show', window.scrollY > window.innerHeight * 0.5); }
+  hdrState();
+  window.addEventListener('scroll', hdrState, {passive:true});
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* Words emerge one at a time */
+  document.querySelectorAll('[data-split]').forEach(function(el){
+    var base = parseFloat(el.getAttribute('data-d')) || 0;
+    var words = el.textContent.trim().split(/\s+/);
+    var step = Math.min(0.07, 1.1 / words.length);
+    el.textContent = '';
+    words.forEach(function(w, i){
+      var sp = document.createElement('span');
+      sp.className = 'w'; sp.textContent = w;
+      sp.style.setProperty('--wd', (base + i * step).toFixed(2) + 's');
+      el.appendChild(sp);
+      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+    el.classList.add('split');
+  });
+
+  /* Rows, cards and buttons emerge one after another */
+  document.querySelectorAll('[data-stagger]').forEach(function(c){
+    var base = parseFloat(c.getAttribute('data-d')) || 0;
+    var isDl = c.tagName === 'DL';
+    Array.prototype.forEach.call(c.children, function(k, i){
+      k.classList.add('classified-reveal');
+      k.style.setProperty('--d', (base + (isDl ? Math.floor(i / 2) : i) * 0.14).toFixed(2) + 's');
+    });
+  });
+
+  var els = Array.prototype.slice.call(document.querySelectorAll('.classified-reveal, .split'));
+  if (reduce || !hasIO) {
+    els.forEach(function(e){ e.classList.add('in-view'); });
+    return;
+  }
+  /* "Directly over" = the middle band of the screen */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var t = en.target;
+      if (en.isIntersecting) {
+        t.classList.add('in-view'); t.classList.remove('passed-view');
+      } else {
+        t.classList.remove('in-view');
+        t.classList.toggle('passed-view', en.boundingClientRect.top < (en.rootBounds ? en.rootBounds.top : 0));
+      }
+    });
+  }, { rootMargin: '-18% 0px -18% 0px', threshold: 0 });
+  els.forEach(function(e){ io.observe(e); });
 })();
 </script>
 </body>
