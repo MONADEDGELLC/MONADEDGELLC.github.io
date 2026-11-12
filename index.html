@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<script>document.documentElement.classList.add("js")</script>
 <meta name="theme-color" content="#000000">
 <title>MONAD EDGE LLC | Thermodynamic Edge Computing</title>
 <meta name="description" content="MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana, developing Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for SWaP-constrained edge computing.">
@@ -47,21 +46,18 @@ header .wrap{display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--head);font-weight:500;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase}
 .brand svg{height:38px;width:auto;flex:none;display:block}
 nav{display:flex;gap:2rem}
-.js header{opacity:0;visibility:hidden;transition:opacity 1.2s ease-out,visibility 0s linear 1.2s}
-.js header.show{opacity:1;visibility:visible;transition:opacity 1.2s ease-out,visibility 0s}
 nav a{text-decoration:none;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:color .3s}
 nav a:hover{color:var(--head)}
 
 /* scenes */
-.scene{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(7rem,18vh,11rem) 0 clamp(5rem,14vh,9rem);border-top:1px solid transparent}
+.scene{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 0 5rem;border-top:1px solid transparent}
 .label{display:flex;align-items:center;gap:1rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:2.2rem}
 .label::before{content:"";width:44px;height:1px;background:var(--dim)}
 h1,h2{font-weight:300;color:var(--head);letter-spacing:-.02em}
 h1{font-size:clamp(2.5rem,6.4vw,5.2rem);line-height:1.04;max-width:14ch}
 h2{font-size:clamp(1.9rem,4.2vw,3.2rem);line-height:1.1;max-width:20ch}
 .lede{max-width:56ch;margin-top:2.2rem;font-size:1.15rem}
-#overview .lede,#overview .actions{margin-top:clamp(5rem,24vh,12rem)}
-p.body{max-width:60ch;margin-top:clamp(2.4rem,9vh,5rem)}
+p.body{max-width:60ch;margin-top:1.8rem}
 
 .actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:3rem}
 .btn{
@@ -73,16 +69,16 @@ p.body{max-width:60ch;margin-top:clamp(2.4rem,9vh,5rem)}
 .btn.solid{background:var(--head);color:#000;border-color:var(--head)}
 .btn.solid:hover{background:transparent;color:var(--head)}
 
-dl{display:grid;grid-template-columns:minmax(140px,240px) 1fr;margin-top:clamp(4rem,16vh,8rem);border-top:1px solid var(--rule)}
+dl{display:grid;grid-template-columns:minmax(140px,240px) 1fr;margin-top:3rem;border-top:1px solid var(--rule)}
 dt,dd{padding:1.25rem 0;border-bottom:1px solid var(--rule)}
 dt{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding-right:1.5rem;line-height:1.7}
 dd{color:var(--head);font-size:1.05rem;font-weight:400;line-height:1.7}
 
-.doctrine{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.5rem;margin-top:clamp(4rem,16vh,8rem)}
+.doctrine{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.5rem;margin-top:3rem}
 .doctrine h3{font-weight:500;font-size:1rem;color:var(--head);margin-bottom:.6rem}
 .doctrine p{font-size:.95rem;color:var(--dim)}
 
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;margin-top:clamp(4rem,16vh,8rem)}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;margin-top:3rem}
 .links a{display:block;text-decoration:none;padding-bottom:1.1rem;border-bottom:1px solid var(--rule);transition:border-color .3s}
 .links a:hover{border-color:var(--head)}
 .links span{display:block;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:.6rem}
@@ -91,53 +87,15 @@ dd{color:var(--head);font-size:1.05rem;font-weight:400;line-height:1.7}
 footer{border-top:1px solid var(--rule);padding:2rem 0 calc(2.2rem + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem}
 
-/* The reveal: hidden in deep shadow, fluidly coalescing */
-.classified-reveal,.split .w{
-  opacity:0;
-  filter:blur(16px);
-  transform:translateY(15px);
-  transition:opacity 1.8s ease-out,filter 1.8s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1),text-shadow 1.8s ease-out;
-  text-shadow:0 0 30px rgba(201,211,221,0); /* invisible glow */
+/* The reveal: hidden in shadow, lit while in view, sinking back once passed */
+.classified-reveal{
+  opacity:0;filter:blur(10px);transform:translateY(30px);
+  transition:opacity 1.2s ease-out,filter 1.2s ease-out,transform 1.2s cubic-bezier(.22,1,.36,1);
+  transition-delay:var(--d,0s);
+  will-change:opacity,filter,transform;
 }
-.classified-reveal{transition-delay:var(--d,0s);will-change:opacity,filter,transform,text-shadow}
-.split .w{display:inline-block;transition-delay:var(--wd,0s)}
-
-/* Active: glowing, slightly soft, bleeding into the void */
-.classified-reveal.in-view,.split.in-view .w{
-  opacity:.9; /* never hits 100% solid */
-  filter:blur(.4px); /* micro-blur prevents harsh vector edges */
-  transform:translateY(0);
-  text-shadow:0 0 12px rgba(201,211,221,.25),0 0 24px rgba(201,211,221,.15); /* phosphor bleed */
-}
-
-/* Passed: sinking back into the fog */
-.classified-reveal.passed-view,.split.passed-view .w{
-  opacity:var(--passed-opacity);
-  filter:blur(12px);
-  transform:translateY(-15px);
-  transition-delay:0s;
-  text-shadow:0 0 30px rgba(201,211,221,0);
-}
-
-/* Landing: just the logo, small, sitting in the dark */
-.landing{align-items:center}
-.landing .wrap{display:flex;justify-content:center}
-.landing .mark{height:56px;width:auto;display:block}
-.landing .classified-reveal{filter:blur(16px) drop-shadow(0 0 0 rgba(201,211,221,0));transition-duration:3.2s}
-.landing .classified-reveal.in-view{filter:blur(.4px) drop-shadow(0 0 16px rgba(201,211,221,.35))}
-.landing .classified-reveal.passed-view{filter:blur(12px) drop-shadow(0 0 0 rgba(201,211,221,0))}
-
-/* Buttons and links keep their hover transitions, with no hover lag from the reveal delay */
-.btn.classified-reveal{
-  transition:opacity 1.8s ease-out,filter 1.8s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1),text-shadow 1.8s ease-out,background .3s,color .3s,border-color .3s;
-  transition-delay:var(--d,0s),var(--d,0s),var(--d,0s),var(--d,0s),0s,0s,0s;
-}
-.links a.classified-reveal{
-  transition:opacity 1.8s ease-out,filter 1.8s ease-out,transform 1.8s cubic-bezier(.16,1,.3,1),text-shadow 1.8s ease-out,border-color .3s;
-  transition-delay:var(--d,0s),var(--d,0s),var(--d,0s),var(--d,0s),0s;
-}
-.btn.classified-reveal.in-view,.btn.classified-reveal.passed-view{text-shadow:none}
-.btn.classified-reveal.passed-view,.links a.classified-reveal.passed-view{transition-delay:0s}
+.classified-reveal.in-view{opacity:1;filter:blur(0);transform:translateY(0)}
+.classified-reveal.passed-view{opacity:var(--passed-opacity);filter:blur(10px);transform:translateY(-30px);transition-delay:0s}
 
 @media (max-width:640px){
   body{font-size:16px}
@@ -145,12 +103,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
   nav a{font-size:.66rem;letter-spacing:.12em}
   .brand{font-size:.7rem;letter-spacing:.16em;gap:.7rem}
   .brand svg{height:32px}
-  .landing .mark{height:48px}
   dl{grid-template-columns:1fr}
   dt{border-bottom:0;padding-bottom:0}
   dd{padding-top:.4rem}
-  .classified-reveal,.split .w{filter:blur(10px)}
-  .classified-reveal.passed-view,.split.passed-view .w{filter:blur(8px)}
+  .classified-reveal,.classified-reveal.passed-view{filter:blur(6px)}
+  .classified-reveal.in-view{filter:blur(0)}
 }
 @media (max-width:520px){
   nav{display:none}
@@ -158,11 +115,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js header,.js header.show{transition:none}
-  .landing .classified-reveal,.landing .classified-reveal.passed-view{filter:none}
-  .classified-reveal,.classified-reveal.passed-view,.split .w,.split.passed-view .w{opacity:1;filter:none;transform:none;transition:none;text-shadow:none}
+  .classified-reveal,.classified-reveal.passed-view{opacity:1;filter:none;transform:none;transition:none}
 }
 </style>
+<noscript><style>.classified-reveal{opacity:1;filter:none;transform:none}</style></noscript>
 </head>
 <body>
 
@@ -183,21 +139,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 </header>
 
 <main>
-  <section class="scene landing" id="top" aria-label="MONAD EDGE LLC">
-    <div class="wrap">
-        <svg class="mark classified-reveal" style="--d:.6s" viewBox="94 144 212 312" role="img" aria-label="MONAD EDGE zero-point logo">
-          <path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-          <path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-        </svg>
-    </div>
-  </section>
-
-  <section class="scene" id="overview">
+  <section class="scene" id="top">
     <div class="wrap">
       <div class="label classified-reveal" style="--d:.1s">01 / Overview</div>
-      <h1 data-split data-d=".3">Thermodynamic execution for the edge.</h1>
-      <p class="lede" data-split data-d=".75">MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana. Its work centers on Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for edge computing.</p>
-      <div class="actions" data-stagger data-d="1.5">
+      <h1 class="classified-reveal" style="--d:.3s">Thermodynamic execution for the edge.</h1>
+      <p class="lede classified-reveal" style="--d:.55s">MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana. Its work centers on Zero-Entropy Topology (Z.E.T.), a thermodynamic executive that governs heat at the lowest layer of edge computing hardware.</p>
+      <div class="actions classified-reveal" style="--d:.8s">
         <a class="btn solid" href="#zet">Technology</a>
         <a class="btn" href="#contact">Contact</a>
       </div>
@@ -207,18 +154,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
   <section class="scene" id="zet">
     <div class="wrap">
       <div class="label classified-reveal">02 / Technology</div>
-      <h2 data-split data-d=".15">Zero-Entropy Topology (Z.E.T.)</h2>
-      <p class="body" data-split data-d=".5">Z.E.T. is a Layer 1.5 thermodynamic executive for SWaP-constrained edge computing, where every watt and every gram has to justify itself. It is developed end to end by MONAD EDGE.</p>
-      <dl data-stagger data-d=".9">
+      <h2 class="classified-reveal" style="--d:.15s">Zero-Entropy Topology (Z.E.T.)</h2>
+      <p class="body classified-reveal" style="--d:.3s">Z.E.T. is a Layer 1.5 thermodynamic executive for SWaP-constrained edge computing, where every watt and every gram has to justify itself. It is developed end to end by MONAD EDGE.</p>
+      <dl class="classified-reveal" style="--d:.45s">
         <dt>Class</dt><dd>Thermodynamic executive, Layer 1.5</dd>
-        <dt>Target hardware</dt><dd>AMD Embedded Mesh, RISC-V SoCs</dd>
+        <dt>Target hardware</dt><dd>AMD Ryzen Embedded SBC clusters, RISC-V adaptive SoCs</dd>
         <dt>Environment</dt><dd>SWaP-constrained edge computing</dd>
         <dt>Maturity</dt><dd>TRL 3, active development</dd>
         <dt>Origin</dt><dd>Developed in-house by MONAD EDGE LLC</dd>
       </dl>
-      <div class="doctrine" data-stagger data-d="0">
+      <div class="doctrine classified-reveal" style="--d:.6s">
         <div><h3>Thermal first</h3><p>Heat is treated as the governing constraint, not a side effect to be managed after the fact.</p></div>
-        <div><h3>Built for the edge</h3><p>Targeted at hardware-agnostic mesh environments (AMD Embedded, RISC-V), where there is no room for waste.</p></div>
+        <div><h3>Built for the edge</h3><p>Targeted at AMD Ryzen Embedded and RISC-V platforms, where there is no room for waste.</p></div>
         <div><h3>One team, one architecture</h3><p>Specification through implementation stays under one roof.</p></div>
       </div>
     </div>
@@ -227,9 +174,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
   <section class="scene" id="contact">
     <div class="wrap">
       <div class="label classified-reveal">03 / Contact</div>
-      <h2 data-split data-d=".15">Inquiries</h2>
-      <p class="body" data-split data-d=".5">For research collaboration, technical discussion, or general inquiries, contact MONAD EDGE through either channel below.</p>
-      <div class="links" data-stagger data-d=".9">
+      <h2 class="classified-reveal" style="--d:.15s">Inquiries</h2>
+      <p class="body classified-reveal" style="--d:.3s">For research collaboration, technical discussion, or general inquiries, contact MONAD EDGE through either channel below.</p>
+      <div class="links classified-reveal" style="--d:.45s">
         <a href="mailto:monadedgellc@gmail.com"><span>Email</span><b>monadedgellc@gmail.com</b></a>
         <a href="https://www.linkedin.com/company/monad-edge-llc" target="_blank" rel="noopener"><span>LinkedIn</span><b>MONAD EDGE LLC</b></a>
       </div>
@@ -247,41 +194,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
-  var hdr = document.querySelector('header');
-  function hdrState(){ hdr.classList.toggle('show', window.scrollY > window.innerHeight * 0.5); }
-  hdrState();
-  window.addEventListener('scroll', hdrState, {passive:true});
+  var els = Array.prototype.slice.call(document.querySelectorAll('.classified-reveal'));
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasIO = 'IntersectionObserver' in window;
-
-  /* Words emerge one at a time */
-  document.querySelectorAll('[data-split]').forEach(function(el){
-    var base = parseFloat(el.getAttribute('data-d')) || 0;
-    var words = el.textContent.trim().split(/\s+/);
-    var step = Math.min(0.07, 1.1 / words.length);
-    el.textContent = '';
-    words.forEach(function(w, i){
-      var sp = document.createElement('span');
-      sp.className = 'w'; sp.textContent = w;
-      sp.style.setProperty('--wd', (base + i * step).toFixed(2) + 's');
-      el.appendChild(sp);
-      if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
-    });
-    el.classList.add('split');
-  });
-
-  /* Rows, cards and buttons emerge one after another */
-  document.querySelectorAll('[data-stagger]').forEach(function(c){
-    var base = parseFloat(c.getAttribute('data-d')) || 0;
-    var isDl = c.tagName === 'DL';
-    Array.prototype.forEach.call(c.children, function(k, i){
-      k.classList.add('classified-reveal');
-      k.style.setProperty('--d', (base + (isDl ? Math.floor(i / 2) : i) * 0.14).toFixed(2) + 's');
-    });
-  });
-
-  var els = Array.prototype.slice.call(document.querySelectorAll('.classified-reveal, .split'));
-  if (reduce || !hasIO) {
+  if (reduce || !('IntersectionObserver' in window)) {
     els.forEach(function(e){ e.classList.add('in-view'); });
     return;
   }
@@ -296,7 +211,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
         t.classList.toggle('passed-view', en.boundingClientRect.top < (en.rootBounds ? en.rootBounds.top : 0));
       }
     });
-  }, { rootMargin: '-18% 0px -18% 0px', threshold: 0 });
+  }, { rootMargin: '-10% 0px -10% 0px', threshold: 0 });
   els.forEach(function(e){ io.observe(e); });
 })();
 </script>
