@@ -37,11 +37,31 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--head);outline-offset:4px}
 .wrap{width:min(1080px,100% - 3rem);margin-inline:auto}
 
+/* carbon fiber weave + slow light sheen (fixed behind everything) */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(27deg,#151515 5px,transparent 5px) 0 5px,
+    linear-gradient(207deg,#151515 5px,transparent 5px) 10px 0,
+    linear-gradient(27deg,#222 5px,transparent 5px) 0 10px,
+    linear-gradient(207deg,#222 5px,transparent 5px) 10px 5px,
+    linear-gradient(90deg,#1b1b1b 10px,transparent 10px),
+    linear-gradient(#1d1d1d 25%,#1a1a1a 25%,#1a1a1a 50%,transparent 50%,transparent 75%,#242424 75%,#242424);
+  background-color:#131313;background-size:20px 20px;
+  opacity:.34; /* raise toward .5 for a more visible weave */
+}
+body::after{
+  content:"";position:fixed;inset:-50%;z-index:-1;pointer-events:none;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.07) 50%,transparent 58%);
+  animation:sheen 16s ease-in-out infinite;will-change:transform;
+}
+@keyframes sheen{0%,100%{transform:translateX(-28%)}50%{transform:translateX(28%)}}
+
 /* fixed header */
 header{
   position:fixed;top:0;left:0;right:0;z-index:10;
   padding:calc(1.4rem + env(safe-area-inset-top,0px)) 0 2.2rem;
-  background:linear-gradient(#000 35%,rgba(0,0,0,0));
+  background:linear-gradient(rgba(0,0,0,.88) 35%,rgba(0,0,0,0));
 }
 header .wrap{display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--head);font-weight:500;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase}
@@ -124,6 +144,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .ln>span{transform:none;animation:none}
+  body::after{display:none}
   .classified-reveal,.classified-reveal.passed-view{opacity:1;filter:none;transform:none;transition:none}
 }
 </style>
