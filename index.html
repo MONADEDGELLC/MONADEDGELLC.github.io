@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
 <title>MONAD EDGE LLC | Thermodynamic Edge Computing</title>
 <meta name="description" content="MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana, developing Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for SWaP-constrained edge computing.">
 <!-- Ghost mode: uncomment to ask search engines not to index the site -->
@@ -78,7 +78,7 @@ h1,h2{font-weight:300;color:var(--head);letter-spacing:-.02em}
 h1{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.035em;
   font-size:clamp(1.7rem,7.4vw,4.6rem);line-height:1.08;max-width:none}
 /* headline: each line rolls up from behind a mask */
-.hero-title{transition:opacity .35s ease-out,filter .35s ease-out,transform 1.2s cubic-bezier(.22,1,.36,1)}
+.hero-title,.hero-title.in-view,.hero-title.passed-view{transform:none;transition:opacity .35s ease-out;transition-delay:0s}
 .ln{display:block;overflow:hidden;white-space:nowrap;padding-bottom:.06em}
 .ln>span{display:block;transform:translateY(110%);animation:roll 1.15s cubic-bezier(.22,1,.36,1) .3s forwards}
 .ln:nth-child(2)>span{animation-delay:.6s}
@@ -138,13 +138,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
 
 /* The reveal: hidden in shadow, lit while in view, sinking back once passed */
 .classified-reveal{
-  opacity:0;filter:blur(10px);transform:translateY(30px);
-  transition:opacity 1.2s ease-out,filter 1.2s ease-out,transform 1.2s cubic-bezier(.22,1,.36,1);
-  transition-delay:var(--d,0s);
-  will-change:opacity,filter,transform;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .7s ease-out,transform .7s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--d,0s) * .6);
+  will-change:opacity,transform;
 }
-.classified-reveal.in-view{opacity:1;filter:blur(0);transform:translateY(0)}
-.classified-reveal.passed-view{opacity:var(--passed-opacity);filter:blur(10px);transform:translateY(-30px);transition-delay:0s}
+.classified-reveal.in-view{opacity:1;transform:translateY(0)}
+.classified-reveal.passed-view{opacity:var(--passed-opacity);transform:translateY(-14px);transition-delay:0s}
 
 @media (max-width:640px){
   body{font-size:16px}
@@ -158,8 +158,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
   .zero figure{flex-direction:row;align-items:center;gap:1.2rem}
   dt{border-bottom:0;padding-bottom:0}
   dd{padding-top:.4rem}
-  .classified-reveal,.classified-reveal.passed-view{filter:blur(6px)}
-  .classified-reveal.in-view{filter:blur(0)}
 }
 @media (max-width:520px){
   nav{display:none}
@@ -171,6 +169,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
   body::after{display:none}
   .classified-reveal,.classified-reveal.passed-view{opacity:1;filter:none;transform:none;transition:none}
 }
+
+/* ===== VARIANT: CLEAN WHITE ===== */
+:root{--bg:#fff;--text:#2a2f36;--head:#000;--dim:#5b6470;--rule:rgba(0,0,0,.16)}
+body{background:#fff}
+body::before,body::after{display:none}
+header{background:linear-gradient(rgba(255,255,255,.94) 35%,rgba(255,255,255,0))}
+.brand svg path{stroke:#000}
+.brand svg path:last-child{fill:#000}
+.btn{border-color:rgba(0,0,0,.55)}
+.btn:hover,.btn.solid{background:#000;color:#fff;border-color:#000}
+.btn.solid:hover{background:transparent;color:#000}
+.layer.zet{border-color:rgba(0,0,0,.65);background:linear-gradient(90deg,rgba(0,0,0,.07),rgba(0,0,0,.015))}
+.layer.zet .n{color:#2a2f36}
+.zero svg line[stroke="#050505"]{stroke:#fff}
+.zero svg circle[fill="#050505"]{fill:#fff}
+.flag g[fill="#000"]{fill:#fff}
 </style>
 <noscript><style>.classified-reveal{opacity:1;filter:none;transform:none}</style></noscript>
 </head>
@@ -193,9 +207,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
 </header>
 
 <main>
-  <section class="scene" id="top">
+  <section class="scene" id="top" aria-label="Overview">
     <div class="wrap">
-      <div class="label classified-reveal" style="--d:.1s">01 / Overview</div>
       <div class="classified-reveal hero-title" style="--d:0s"><h1><span class="ln"><span>Thermal supremacy</span></span><span class="ln"><span>at the edge.</span></span></h1></div>
       <p class="lede classified-reveal" style="--d:.55s">MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana. Its work centers on Zero-Entropy Topology (Z.E.T.), a thermodynamic executive that governs heat at the lowest layer of edge computing hardware.</p>
       <div class="actions classified-reveal" style="--d:.8s">
@@ -205,9 +218,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
     </div>
   </section>
 
-  <section class="scene" id="zet">
+  <section class="scene" id="zet" aria-label="Technology">
     <div class="wrap">
-      <div class="label classified-reveal">02 / Technology</div>
       <h2 class="classified-reveal" style="--d:.15s">Zero-Entropy Topology (Z.E.T.)</h2>
       <p class="body classified-reveal" style="--d:.3s">Z.E.T. is a Layer 1.5 thermodynamic executive for SWaP-constrained edge computing, where every watt and every gram has to justify itself. It is developed end to end by MONAD EDGE.</p>
       <dl class="classified-reveal" style="--d:.45s">
@@ -226,9 +238,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
     </div>
   </section>
 
-  <section class="scene" id="stack">
+  <section class="scene" id="stack" aria-label="Architecture">
     <div class="wrap">
-      <div class="label classified-reveal">03 / Architecture</div>
       <h2 class="classified-reveal" style="--d:.15s">Layer 1.5</h2>
       <p class="body classified-reveal" style="--d:.3s">Z.E.T. sits between the hardware abstraction layer and the operating system&rsquo;s network stack. It reads what the silicon is doing and steers traffic away from thermal trouble before throttling begins.</p>
       <div class="stack classified-reveal" style="--d:.45s" role="list">
@@ -240,9 +251,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
     </div>
   </section>
 
-  <section class="scene" id="zero">
+  <section class="scene" id="zero" aria-label="Design objectives">
     <div class="wrap">
-      <div class="label classified-reveal">04 / Design objectives</div>
       <h2 class="classified-reveal" style="--d:.15s;max-width:none">Zero fans. Zero water. Zero entropy.</h2>
       <div class="zero classified-reveal" style="--d:.3s">
         <figure><svg viewBox="0 0 120 120" role="img" aria-hidden="true"><g fill="currentColor" opacity=".85"><ellipse cx="60" cy="45" rx="7" ry="14" transform="rotate(20 60 60)"/><ellipse cx="60" cy="45" rx="7" ry="14" transform="rotate(110 60 60)"/><ellipse cx="60" cy="45" rx="7" ry="14" transform="rotate(200 60 60)"/><ellipse cx="60" cy="45" rx="7" ry="14" transform="rotate(290 60 60)"/></g><circle cx="60" cy="60" r="5" fill="#050505" stroke="currentColor" stroke-width="2"/><circle cx="60" cy="60" r="31" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/><line x1="23" y1="23" x2="97" y2="97" stroke="#050505" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="3.5"/><line x1="23" y1="23" x2="97" y2="97" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg><figcaption><h3>Zero fans</h3><p>Thermal limits held in software, not by moving air.</p></figcaption></figure>
@@ -253,9 +263,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
     </div>
   </section>
 
-  <section class="scene" id="contact">
+  <section class="scene" id="contact" aria-label="Contact">
     <div class="wrap">
-      <div class="label classified-reveal">05 / Contact</div>
       <h2 class="classified-reveal" style="--d:.15s">Inquiries</h2>
       <p class="body classified-reveal" style="--d:.3s">For research collaboration, technical discussion, or general inquiries, contact MONAD EDGE through either channel below.</p>
       <div class="links classified-reveal" style="--d:.45s">
