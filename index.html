@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f5f6f7">
 <title>MONAD EDGE LLC | Thermodynamic Edge Computing</title>
 <meta name="description" content="MONAD EDGE LLC is a deep tech research and development firm in Shreveport, Louisiana, developing Zero-Entropy Topology (Z.E.T.), a thermodynamic executive for SWaP-constrained edge computing.">
 <!-- Ghost mode: uncomment to ask search engines not to index the site -->
@@ -131,6 +131,7 @@ dd{color:var(--head);font-size:1.05rem;font-weight:400;line-height:1.7}
 .zero p{font-size:.95rem;color:var(--dim);max-width:30ch}
 .fine{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:2.4rem}
 
+#heat{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 footer{border-top:1px solid var(--rule);padding:2rem 0 calc(2.2rem + env(safe-area-inset-bottom,0px));font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.6rem 2rem}
 .flagline{display:inline-flex;align-items:center;gap:.8rem}
@@ -171,10 +172,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
 }
 
 /* ===== VARIANT: CLEAN WHITE ===== */
-:root{--bg:#fff;--text:#2a2f36;--head:#000;--dim:#5b6470;--rule:rgba(0,0,0,.16)}
-body{background:#fff}
+:root{--bg:#f5f6f7;--text:#2a2f36;--head:#000;--dim:#5b6470;--rule:rgba(0,0,0,.16)}
+body{background:#f5f6f7}
 body::before,body::after{display:none}
-header{background:linear-gradient(rgba(255,255,255,.94) 35%,rgba(255,255,255,0))}
+header{background:linear-gradient(rgba(245,246,247,.94) 35%,rgba(245,246,247,0))}
 .brand svg path{stroke:#000}
 .brand svg path:last-child{fill:#000}
 .btn{border-color:rgba(0,0,0,.55)}
@@ -182,9 +183,9 @@ header{background:linear-gradient(rgba(255,255,255,.94) 35%,rgba(255,255,255,0))
 .btn.solid:hover{background:transparent;color:#000}
 .layer.zet{border-color:rgba(0,0,0,.65);background:linear-gradient(90deg,rgba(0,0,0,.07),rgba(0,0,0,.015))}
 .layer.zet .n{color:#2a2f36}
-.zero svg line[stroke="#050505"]{stroke:#fff}
-.zero svg circle[fill="#050505"]{fill:#fff}
-.flag g[fill="#000"]{fill:#fff}
+.zero svg line[stroke="#050505"]{stroke:#f5f6f7}
+.zero svg circle[fill="#050505"]{fill:#f5f6f7}
+.flag g[fill="#000"]{fill:#f5f6f7}
 </style>
 <noscript><style>.classified-reveal{opacity:1;filter:none;transform:none}</style></noscript>
 </head>
@@ -316,6 +317,58 @@ header{background:linear-gradient(rgba(255,255,255,.94) 35%,rgba(255,255,255,0))
     });
   }, { rootMargin: '-10% 0px -10% 0px', threshold: 0 });
   els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+<script>
+/* reactive thermal field behind the page: follows the cursor, drifts with scroll */
+(function(){
+  var c=document.createElement('canvas');c.id='heat';c.setAttribute('aria-hidden','true');
+  document.body.insertBefore(c,document.body.firstChild);
+  var gl=c.getContext('webgl',{antialias:false,alpha:false});
+  if(!gl){c.parentNode.removeChild(c);return;}
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+  var fs='#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n'+
+  'uniform vec2 u_res,u_m;uniform float u_t,u_s;'+
+  'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'+
+  'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}'+
+  'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p*=2.02;a*=.5;}return v;}'+
+  'void main(){vec2 as=vec2(u_res.x/u_res.y,1.);vec2 uv=gl_FragCoord.xy/u_res;'+
+  'float f=fbm(uv*as*2.4+vec2(u_t*.02,u_s*.35))*.9;'+
+  'vec2 q=(uv-u_m)*as;f+=.6*exp(-dot(q,q)*14.);f=clamp(f,0.,1.);'+
+  'vec3 col=mix(vec3(.961,.965,.969),vec3(.86,.91,.96),smoothstep(.25,.55,f));'+
+  'col=mix(col,vec3(.96,.86,.78),smoothstep(.55,.8,f));'+
+  'col=mix(col,vec3(.93,.66,.54),smoothstep(.82,1.,f)*.8);'+
+  'float l=smoothstep(.465,.5,abs(fract(f*12.)-.5));col=mix(col,vec3(.16,.18,.21),l*.13);'+
+  'gl_FragColor=vec4(col,1.);}';
+  function sh(t,src){var o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return o;}
+  var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));
+  gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){c.parentNode.removeChild(c);return;}
+  gl.useProgram(pr);
+  var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+  var loc=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var U={r:gl.getUniformLocation(pr,'u_res'),m:gl.getUniformLocation(pr,'u_m'),t:gl.getUniformLocation(pr,'u_t'),s:gl.getUniformLocation(pr,'u_s')};
+  var mx=.5,my=.5,tx=.5,ty=.5,t=0,last=-9,idle=true;
+  function size(){var d=Math.min(window.devicePixelRatio||1,1.5);c.width=Math.round(innerWidth*d);c.height=Math.round(innerHeight*d);gl.viewport(0,0,c.width,c.height);}
+  function draw(){
+    gl.uniform2f(U.r,c.width,c.height);gl.uniform2f(U.m,mx,my);gl.uniform1f(U.t,t);gl.uniform1f(U.s,scrollY/innerHeight);
+    gl.drawArrays(gl.TRIANGLES,0,3);
+  }
+  function loop(){
+    t+=.016;
+    if(idle){tx=.5+.3*Math.sin(t*.2);ty=.5+.25*Math.cos(t*.17);}
+    mx+=(tx-mx)*.08;my+=(ty-my)*.08;
+    if(!document.hidden)draw();
+    requestAnimationFrame(loop);
+  }
+  function aim(x,y){tx=x/innerWidth;ty=1-y/innerHeight;idle=false;clearTimeout(last);last=setTimeout(function(){idle=true;},3500);if(reduce){mx=tx;my=ty;draw();}}
+  addEventListener('pointermove',function(e){aim(e.clientX,e.clientY);},{passive:true});
+  addEventListener('resize',function(){size();draw();});
+  if(reduce)addEventListener('scroll',draw,{passive:true});
+  size();draw();
+  if(!reduce)loop();
 })();
 </script>
 </body>
