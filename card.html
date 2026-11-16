@@ -3,139 +3,204 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
 <title>MONAD EDGE LLC | Jesse DeWayne McCready</title>
-<meta name="theme-color" content="#050505">
 <style>
-:root{--bg:#050505;--panel:#0a0a0b;--line:#25262a;--ink:#e9eaec;--mute:#8d9096;--acc:#dfe6ee;--chrome:linear-gradient(180deg,#f2f5f8 0,#b8c1cc 36%,#5d6672 51%,#aeb8c4 64%,#e8edf2 100%);--silver:#c4c7cc}
+:root{--ink:#eef1f4;--mute:#b3bbc5;--line:rgba(255,255,255,.2);
+ --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+ --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+ --display:"Barlow Semi Condensed","Arial Narrow",Arial,sans-serif}
 *{box-sizing:border-box;margin:0}
 html,body{min-height:100%}
-body{background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
- background-image:radial-gradient(circle at 18% 12%,rgba(90,120,255,.26),transparent 42%),radial-gradient(circle at 88% 62%,rgba(255,80,200,.18),transparent 42%),radial-gradient(circle at 25% 92%,rgba(60,230,210,.16),transparent 42%),linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-attachment:fixed,fixed,fixed,scroll,scroll;
- background-size:auto,auto,auto,48px 48px,48px 48px;background-position:0 0,0 0,0 0,-1px -1px,-1px -1px;
- padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));display:flex;justify-content:center}
-body::after{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 3px)}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,transparent 0,rgba(5,5,5,.65) 100%);pointer-events:none}
-.card{position:relative;width:100%;max-width:460px;padding:34px 30px;align-self:flex-start;margin-top:12px;--rx:0deg;--ry:0deg;--mx:50%;--my:50%;
- background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.03) 42%,rgba(255,255,255,.07));
- -webkit-backdrop-filter:blur(18px) saturate(1.7);backdrop-filter:blur(18px) saturate(1.7);
- box-shadow:inset 0 0 0 1px rgba(255,255,255,.14),inset 0 1px 0 rgba(255,255,255,.35),0 50px 70px -35px #000,0 0 90px -20px rgba(140,170,255,.3);
- transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));will-change:transform;animation:float 7s ease-in-out infinite}
-@keyframes float{50%{translate:0 -8px}}
-.holo{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.3;
- background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.6),transparent 36%),repeating-linear-gradient(115deg,#ff5ecb 0,#7b6bff 8%,#3de0e0 16%,#7dff9a 24%,#fff06a 32%,#ff5ecb 40%);
- background-size:100% 100%,300% 300%;background-position:0 0,var(--mx) var(--my)}
-.card::before,.card::after{content:"";position:absolute;inset:0;pointer-events:none;--b:var(--acc);--l:26px;--t:2px}
-.card::before{background:
- linear-gradient(var(--b),var(--b)) 0 0/var(--l) var(--t) no-repeat,
- linear-gradient(var(--b),var(--b)) 0 0/var(--t) var(--l) no-repeat,
- linear-gradient(var(--b),var(--b)) 100% 0/var(--l) var(--t) no-repeat,
- linear-gradient(var(--b),var(--b)) 100% 0/var(--t) var(--l) no-repeat}
-.card::after{background:
- linear-gradient(var(--b),var(--b)) 0 100%/var(--l) var(--t) no-repeat,
- linear-gradient(var(--b),var(--b)) 0 100%/var(--t) var(--l) no-repeat,
- linear-gradient(var(--b),var(--b)) 100% 100%/var(--l) var(--t) no-repeat,
- linear-gradient(var(--b),var(--b)) 100% 100%/var(--t) var(--l) no-repeat}
-.top{padding-bottom:14px;border-bottom:1px solid transparent;border-image:linear-gradient(90deg,#fff,var(--silver) 50%,transparent) 1;display:flex;justify-content:space-between;align-items:center;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:8px;box-shadow:0 0 10px #bcd6ff;animation:p 2.4s infinite}
-@keyframes p{50%{opacity:.35}}
-.logo{display:block;width:84px;height:84px;margin:26px 0 18px;filter:drop-shadow(0 0 20px #bcd6ff40)}
-h1{font-size:28px;font-weight:600;letter-spacing:-.01em;display:inline-block;max-width:100%;color:#c4ccd6;background:var(--chrome);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;transform:translateZ(0)}
-@supports not ((-webkit-background-clip:text) or (background-clip:text)){h1{-webkit-text-fill-color:currentColor}}
-.role{margin-top:4px;color:#aab4c0;font:13px ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+body{background:radial-gradient(ellipse at 50% 38%,#0b0d10 0,#000 62%) fixed,#000;color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;
+ padding:max(28px,env(safe-area-inset-top)) 16px 84px;display:flex;justify-content:center}
+.stage{width:100%;max-width:460px;perspective:1100px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;align-self:flex-start;margin-top:8px}
+.stage.drag{cursor:grabbing}
+.card{position:relative;transform-style:preserve-3d;will-change:transform}
+.face{backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+ background:linear-gradient(135deg,#4b535c,#1e2227 50%,#3b4249)}
+.face canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.front{position:relative;transform:translateZ(1.5px)}
+.back{position:absolute;inset:0;transform:rotateY(180deg) translateZ(1.5px)}
+.in{position:relative;z-index:1;padding:34px 30px}
+.e{position:absolute;background:linear-gradient(90deg,#aab2bb,#3a4047 50%,#c4cad1)}
+.e.l{left:0;top:0;bottom:0;width:3px;transform-origin:0 50%;transform:translateZ(1.5px) rotateY(90deg)}
+.e.r{right:0;top:0;bottom:0;width:3px;transform-origin:100% 50%;transform:translateZ(1.5px) rotateY(-90deg)}
+.e.t{left:0;right:0;top:0;height:3px;transform-origin:50% 0;transform:translateZ(1.5px) rotateX(-90deg);background:linear-gradient(180deg,#c4cad1,#6a727b)}
+.e.b{left:0;right:0;bottom:0;height:3px;transform-origin:50% 100%;transform:translateZ(1.5px) rotateX(90deg);background:linear-gradient(180deg,#3a4047,#1b1e22)}
+.eng{color:#0a0c0e;text-shadow:0 1px 0 rgba(255,255,255,.34),0 -1px 0 rgba(0,0,0,.55)}
+.top{padding-bottom:14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font:11px var(--mono);letter-spacing:.14em;color:var(--mute)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-right:8px;animation:p 2.4s infinite}
+@keyframes p{50%{opacity:.3}}
+.logo{display:block;width:52px;height:auto;margin:26px 0 20px;filter:drop-shadow(0 1px 0 rgba(255,255,255,.34))}
+h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppercase;letter-spacing:.04em}
+.role{margin-top:8px;font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase}
 .tag{margin-top:14px;color:var(--mute);font-size:14px}
 .tag b{color:var(--ink);font-weight:500}
-.grid{margin-top:22px;border:1px solid var(--line);border-radius:0;display:grid;grid-template-columns:1fr 1fr}
-.grid div{padding:11px 14px;border-bottom:1px solid var(--line);font:12px ui-monospace,Menlo,monospace}
+.grid{margin-top:22px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr}
+.grid div{padding:11px 14px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--ink)}
 .grid div:nth-child(odd){border-right:1px solid var(--line)}
 .grid div:nth-last-child(-n+2){border-bottom:0}
 .grid span{display:block;color:var(--mute);font-size:10px;letter-spacing:.16em;margin-bottom:2px}
+.grid b{font-weight:400}
 .grid .wide{grid-column:1/-1;border-right:0!important}
 .btns{margin-top:22px;display:grid;gap:10px}
-.btn{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:1px solid var(--line);border-radius:0;color:var(--ink);text-decoration:none;font-size:14px;transition:.2s}
-.btn:hover,.btn:focus-visible{border-color:#cfd6de;background:#ffffff0a;outline:0}
-.btn.p{background:var(--chrome);color:#0b0d10;border-color:#fff;font-weight:600;box-shadow:0 8px 24px -8px rgba(200,215,235,.45)}
-.btn.p:hover{filter:brightness(1.1)}
-.btn i{font:normal 12px ui-monospace,Menlo,monospace;opacity:.6}
-.foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:10px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:var(--mute)}
-.grid b{font-weight:400}
-.tele{margin-top:10px;font:9px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#5d6066;text-align:center;font-variant-numeric:tabular-nums}
-@media(prefers-reduced-motion:reduce){.dot,.card{animation:none}}
+.btn{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:1px solid rgba(255,255,255,.42);color:var(--ink);text-decoration:none;font-size:14px;transition:.2s;-webkit-user-drag:none}
+.btn:hover,.btn:focus-visible{border-color:#fff;background:rgba(255,255,255,.09);outline:0}
+.btn.p{background:linear-gradient(180deg,#eef1f4 0,#b4bcc6 52%,#dde1e6 100%);color:#0b0d10;border-color:#d7dce2;font-weight:500;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+.btn.p:hover{background:transparent;color:var(--ink);box-shadow:none}
+.btn i{font:normal 12px var(--mono);opacity:.7}
+.us{margin-top:22px;display:flex;align-items:center;gap:.7rem;font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.us svg{height:11px;width:auto;flex:none}
+.foot{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;font:10px var(--mono);letter-spacing:.14em;color:var(--mute)}
+.foot span{white-space:nowrap}
+.tele{margin-top:10px;font:9px var(--mono);letter-spacing:.12em;color:#8b939d;text-align:center;font-variant-numeric:tabular-nums}
+.back .in{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
+.back .logo{width:96px;margin:0}
+.back .nm{font:600 1.1rem var(--display);letter-spacing:.3em;text-transform:uppercase}
+.back .sb{font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase}
+.pill{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;
+ color:#6f7781;background:transparent;border:1px solid rgba(255,255,255,.14);padding:.7rem 1.2rem;pointer-events:none;transition:color .3s,border-color .3s,background .3s}
+.pill.on{color:var(--ink);border-color:rgba(255,255,255,.55);background:rgba(0,0,0,.6);pointer-events:auto;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.dot{animation:none}}
 </style>
 </head>
 <body>
-<main class="card">
-  <i class="holo" aria-hidden="true"></i>
-  <div class="top"><span><i class="dot"></i>SYS.STATUS: ONLINE</span><span>MONAD EDGE</span></div>
-
-  <img class="logo" src="zero-point-logo.svg" alt="Monad Edge logo">
-  <h1 class="decode-text">Jesse DeWayne McCready</h1>
-  <div class="role">Principal Architect / CEO</div>
-  <p class="tag">Founder of <b>MONAD EDGE LLC</b>. Developer of <b>Zero-Entropy Topology (Z.E.T.)</b>.</p>
-
-  <div class="grid">
-    <div><span>CAGE</span><b class="decode-text">243J6</b></div>
-    <div><span>UEI</span><b class="decode-text">YE9ZHNXRY2N8</b></div>
-    <div class="wide"><span>IP STATUS</span>Provisional Patent 64/007,869</div>
+<div class="stage" id="stage">
+ <div class="card" id="card">
+  <div class="face front">
+   <canvas id="cf" aria-hidden="true"></canvas>
+   <div class="in">
+    <div class="top"><span><i class="dot"></i>SYS.STATUS: ONLINE</span><span>MONAD EDGE</span></div>
+    <svg class="logo" viewBox="94 144 212 312" role="img" aria-label="Monad Edge logo"><path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#0a0c0e" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <h1 class="eng decode-text">Jesse DeWayne McCready</h1>
+    <div class="role eng">Principal Architect / CEO</div>
+    <p class="tag">Founder of <b>MONAD EDGE LLC</b>. Developer of <b>Zero-Entropy Topology (Z.E.T.)</b>.</p>
+    <div class="grid">
+     <div><span>CAGE</span><b class="decode-text">243J6</b></div>
+     <div><span>UEI</span><b class="decode-text">YE9ZHNXRY2N8</b></div>
+     <div class="wide"><span>IP STATUS</span>Provisional Patent 64/007,869</div>
+    </div>
+    <nav class="btns">
+     <a class="btn p" href="mailto:monadedgellc@gmail.com">Initiate Contact <i>&rarr;</i></a>
+     <a class="btn" href="https://monadedgellc.space">Website <i>monadedgellc.space</i></a>
+     <a class="btn" href="https://github.com/MONADEDGELLC">GitHub <i>/MONADEDGELLC</i></a>
+     <a class="btn" href="https://www.linkedin.com/in/jesse-mccready-893b52245/">LinkedIn <i>/in/jesse-mccready</i></a>
+    </nav>
+    <div class="us"><svg viewBox="0 0 38 20" role="img" aria-label="United States flag"><g fill="currentColor" opacity=".7"><rect y="0" width="38" height="1.538"/><rect y="3.077" width="38" height="1.538"/><rect y="6.154" width="38" height="1.538"/><rect y="9.231" width="38" height="1.538"/><rect y="12.308" width="38" height="1.538"/><rect y="15.385" width="38" height="1.538"/><rect y="18.462" width="38" height="1.538"/></g><rect width="15.2" height="10.769" fill="currentColor"/></svg>100% US-Owned &amp; Operated</div>
+    <div class="foot"><span>NO TRACKERS</span><span>NO SUBSCRIPTIONS</span><span>SELF-HOSTED</span></div>
+    <div class="tele" id="tele" aria-hidden="true"></div>
+   </div>
   </div>
-
-  <nav class="btns">
-    <a class="btn p" href="mailto:jesse.mccready@example.com">Initiate Contact <i>&rarr;</i></a>
-    <a class="btn" href="https://github.com/MONADEDGELLC">GitHub <i>/MONADEDGELLC</i></a>
-    <a class="btn" href="https://www.linkedin.com/in/jesse-mccready-893b52245/">LinkedIn <i>/in/jesse-mccready</i></a>
-  </nav>
-
-
-  <div class="foot"><span>NO TRACKERS</span><span>NO SUBSCRIPTIONS</span><span>SELF-HOSTED</span></div>
-  <div class="tele" id="tele" aria-hidden="true"></div>
-</main>
+  <div class="face back">
+   <canvas id="cb" aria-hidden="true"></canvas>
+   <div class="in">
+    <svg class="logo" viewBox="94 144 212 312" aria-hidden="true"><path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#0a0c0e" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div class="nm eng">Monad Edge</div>
+    <div class="sb eng">Zero-Entropy Topology</div>
+   </div>
+  </div>
+  <i class="e l"></i><i class="e r"></i><i class="e t"></i><i class="e b"></i>
+ </div>
+</div>
+<button class="pill" id="pill" type="button">Drag to rotate</button>
 <script>
 (function(){
   var pool="ABCDEF0123456789@#$%&*",DUR=400,FRAME=30;
-  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll(".decode-text").forEach(function(el){
-    var txt=el.textContent;
-    el.setAttribute("aria-label",txt);
-    if(reduce)return;
-    var t0=performance.now();
-    (function tick(now){
-      var p=Math.min((now-t0)/DUR,1),lock=Math.floor(p*txt.length),out="";
-      for(var i=0;i<txt.length;i++){
-        var c=txt[i];
-        out+=(c===" "||i<lock)?c:pool[Math.floor(Math.random()*pool.length)];
-      }
-      el.textContent=out;
-      if(p<1)setTimeout(function(){tick(performance.now())},FRAME);else el.textContent=txt;
-    })(t0);
+    var txt=el.textContent;el.setAttribute("aria-label",txt);if(reduce)return;var t0=performance.now();
+    (function tick(now){var p=Math.min((now-t0)/DUR,1),lock=Math.floor(p*txt.length),out="";
+      for(var i=0;i<txt.length;i++){var c=txt[i];out+=(c===" "||i<lock)?c:pool[Math.floor(Math.random()*pool.length)];}
+      el.textContent=out;if(p<1)setTimeout(function(){tick(performance.now())},FRAME);else el.textContent=txt;})(t0);
   });
   var tele=document.getElementById("tele");
-  function upd(){
-    tele.textContent="EPOCH "+Math.floor(Date.now()/1000)+" | "+screen.width+"x"+screen.height+" @"+(window.devicePixelRatio||1)+"x";
-  }
+  function upd(){tele.textContent="EPOCH "+Math.floor(Date.now()/1000)+" | "+screen.width+"x"+screen.height+" @"+(window.devicePixelRatio||1)+"x";}
   upd();setInterval(upd,1000);
 })();
 </script>
 <script>
+/* brushed-metal faces (WebGL) + free spin with easy stabilize */
 (function(){
-  var card=document.querySelector(".card");
-  if(!card||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches))return;
-  var tx=.5,ty=.5,cx=.5,cy=.5,last=0,clamp=function(v,a,b){return Math.max(a,Math.min(b,v))};
-  function aim(x,y){var r=card.getBoundingClientRect();tx=clamp((x-r.left)/r.width,-.2,1.2);ty=clamp((y-r.top)/r.height,-.2,1.2);last=performance.now()}
-  addEventListener("pointermove",function(e){aim(e.clientX,e.clientY)},{passive:true});
-  addEventListener("pointerdown",function(e){aim(e.clientX,e.clientY);
-    if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission&&!window._o){window._o=1;
-      try{DeviceOrientationEvent.requestPermission().then(function(r){if(r==="granted")listen()}).catch(function(){})}catch(_){}}},{passive:true});
-  function listen(){addEventListener("deviceorientation",function(e){
-    if(e.gamma==null)return;tx=.5+clamp(e.gamma,-25,25)/50;ty=.5+clamp((e.beta||45)-45,-25,25)/50;last=performance.now()},{passive:true})}
-  if(window.DeviceOrientationEvent&&!DeviceOrientationEvent.requestPermission)listen();
-  (function loop(t){
-    if(t-last>2500){tx=.5+.38*Math.sin(t/2600);ty=.5+.38*Math.cos(t/3300)}
-    cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;
-    card.style.setProperty("--ry",((cx-.5)*16).toFixed(2)+"deg");
-    card.style.setProperty("--rx",((.5-cy)*14).toFixed(2)+"deg");
-    card.style.setProperty("--mx",(cx*100).toFixed(1)+"%");
-    card.style.setProperty("--my",(cy*100).toFixed(1)+"%");
-    requestAnimationFrame(loop);
-  })(0);
+  var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+  var fs='#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n'+
+  'uniform vec2 u_res;uniform mat3 u_R;'+
+  'float sq(float x){return x*x;}'+
+  'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'+
+  'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}'+
+  'vec3 fx(vec3 v){vec3 w=u_R*v;w.y=-w.y;return w;}'+
+  'void main(){vec2 px=gl_FragCoord.xy;vec2 uv=px/u_res;'+
+  'float g=n(vec2(px.x*.012,px.y*.9))*.55+n(vec2(px.x*.03,px.y*.35))*.3+n(vec2(px.x*.004,px.y*2.2))*.15;float d=g-.5;'+
+  'vec3 N=fx(normalize(vec3(d*.04,-d*.30,1.)));vec3 T=fx(vec3(1.,0.,0.));vec3 B=fx(vec3(0.,-1.,0.));'+
+  'vec2 p=uv-.5;vec3 V=normalize(vec3(-p.x*.6,-p.y*.6,1.));'+
+  'vec3 L1=normalize(vec3(-.45,.75,.55)),L2=normalize(vec3(.8,-.2,.5));'+
+  'vec3 H1=normalize(L1+V),H2=normalize(L2+V);'+
+  'float s1=exp(-2.*(sq(dot(H1,T)/.85)+sq(dot(H1,B)/.11))/(1.+dot(H1,N)));'+
+  'float s2=exp(-2.*(sq(dot(H2,T)/.85)+sq(dot(H2,B)/.14))/(1.+dot(H2,N)));'+
+  'vec3 R=reflect(-V,N);float env=smoothstep(-.3,.9,R.y);'+
+  'vec3 base=vec3(.20,.22,.25)*(.65+.5*max(dot(N,L1),0.)+.25*max(dot(N,L2),0.));'+
+  'vec3 col=base*(.8+.4*g)+vec3(.30,.33,.37)*env*.35+vec3(.85,.9,.95)*(s1*.55+s2*.3);'+
+  'vec2 dm=min(px,u_res-px);float e=min(dm.x,dm.y);'+
+  'col+=vec3(.5)*smoothstep(2.5,0.,e)*.25;col*=smoothstep(0.,3.,e)*.4+.6;'+
+  'col=col/(1.+col*.6);gl_FragColor=vec4(col,1.);}';
+  function mk(cv){
+    var gl=cv.getContext('webgl',{antialias:true,alpha:false});if(!gl){cv.style.display='none';return null;}
+    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o;}
+    var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){cv.style.display='none';return null;}
+    gl.useProgram(pr);var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var l=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);
+    var ur=gl.getUniformLocation(pr,'u_res'),uR=gl.getUniformLocation(pr,'u_R');
+    return {size:function(w,h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);},
+      draw:function(m){gl.uniform2f(ur,cv.width,cv.height);gl.uniformMatrix3fv(uR,false,m);gl.drawArrays(gl.TRIANGLES,0,3);}};
+  }
+  var F=mk(document.getElementById('cf')),Bk=mk(document.getElementById('cb'));
+  var card=document.getElementById('card'),stage=document.getElementById('stage'),pill=document.getElementById('pill');
+  function resize(){var r=card.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+    var w=Math.round(card.offsetWidth*d),h=Math.round(card.offsetHeight*d);if(F)F.size(w,h);if(Bk)Bk.size(w,h);}
+  if(window.ResizeObserver)new ResizeObserver(resize).observe(card);else addEventListener('resize',resize);
+  resize();
+  var D=Math.PI/180;
+  function mat(rx,ry,back){var c=Math.cos(ry*D),s=Math.sin(ry*D),cx=Math.cos(rx*D),sx=Math.sin(rx*D);
+    var m=[c,sx*s,-cx*s, 0,cx,sx, s,-sx*c,cx*c];
+    if(back){m[0]=-m[0];m[1]=-m[1];m[2]=-m[2];m[6]=-m[6];m[7]=-m[7];m[8]=-m[8];}
+    return new Float32Array(m);}
+  var rx=0,ry=0,vx=0,vy=0,hx=0,hy=0,mode='stable',drag=false,moved=false,lx=0,ly=0;
+  function stabilize(){mode='stab';vx=vy=0;}
+  function onCtl(t){return t&&t.closest&&t.closest('a,button');}
+  stage.addEventListener('pointerdown',function(e){if(onCtl(e.target))return;drag=true;moved=false;lx=e.clientX;ly=e.clientY;});
+  addEventListener('pointermove',function(e){
+    if(drag){var dx=e.clientX-lx,dy=e.clientY-ly;
+      if(!moved&&Math.abs(dx)+Math.abs(dy)<4)return;
+      moved=true;mode='free';stage.classList.add('drag');
+      vy=Math.max(-40,Math.min(40,dx*.5));vx=Math.max(-40,Math.min(40,-dy*.5));
+      ry+=vy;rx+=vx;lx=e.clientX;ly=e.clientY;
+    }else if(mode==='stable'&&e.pointerType==='mouse'&&!reduce){
+      hy=(e.clientX/innerWidth-.5)*14;hx=(.5-e.clientY/innerHeight)*10;}
+  },{passive:true});
+  function up(){if(drag){drag=false;stage.classList.remove('drag');}}
+  addEventListener('pointerup',up);addEventListener('pointercancel',up);
+  stage.addEventListener('dblclick',function(e){if(!onCtl(e.target))stabilize();});
+  pill.addEventListener('click',stabilize);
+  addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='s'||e.key==='S')stabilize();});
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function frame(){
+    if(!drag){
+      if(mode==='free'){ry+=vy;rx+=vx;vy*=.972;vx*=.972;if(Math.abs(vy)<.03&&Math.abs(vx)<.03){vy=vx=0;}}
+      else if(mode==='stab'){var ty=Math.round(ry/360)*360,tx=Math.round(rx/360)*360;
+        ry+=(ty-ry)*.12;rx+=(tx-rx)*.12;
+        if(Math.abs(ty-ry)+Math.abs(tx-rx)<.1){ry=rx=0;mode='stable';}}
+      else{ry+=(hy-ry)*.08;rx+=(hx-rx)*.08;}
+    }
+    card.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
+    var front=Math.cos(rx*D)*Math.cos(ry*D)>=0,on=mode!=='stable';
+    var m=mat(rx,ry,!front);if(front){if(F)F.draw(m);}else{if(Bk)Bk.draw(m);}
+    if(on!==pill.classList.contains('on')){pill.classList.toggle('on',on);pill.textContent=on?'Stabilize':'Drag to rotate';}
+    requestAnimationFrame(frame);
+  }
+  frame();
 })();
 </script>
 </body>
