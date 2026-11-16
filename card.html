@@ -63,17 +63,37 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
 .pill{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);font:10px var(--mono);letter-spacing:.2em;text-transform:uppercase;
  color:#6f7781;background:transparent;border:1px solid rgba(255,255,255,.14);padding:.7rem 1.2rem;pointer-events:none;transition:color .3s,border-color .3s,background .3s}
 .pill.on{color:var(--ink);border-color:rgba(255,255,255,.55);background:rgba(0,0,0,.6);pointer-events:auto;cursor:pointer}
-@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+ background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:72px 72px;background-position:center;
+ -webkit-mask-image:radial-gradient(ellipse at 50% 38%,#000 0,transparent 68%);mask-image:radial-gradient(ellipse at 50% 38%,#000 0,transparent 68%)}
+.floor{position:fixed;left:0;right:0;bottom:0;height:46vh;overflow:hidden;perspective:380px;z-index:-1;pointer-events:none;
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 75%);mask-image:linear-gradient(to bottom,transparent 0,#000 75%)}
+.floor::before{content:"";position:absolute;left:-70%;right:-70%;top:0;height:260%;transform-origin:50% 0;transform:rotateX(72deg);
+ background-image:linear-gradient(rgba(255,255,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.2) 1px,transparent 1px);background-size:64px 64px;animation:drift 5s linear infinite}
+@keyframes drift{to{background-position:0 64px}}
+.logo{color:#0a0c0e}
+body.carbon{--ink:#f5f6f7;--mute:#a7afb9;--line:rgba(245,246,247,.22)}
+.carbon .eng{color:#f5f6f7;text-shadow:none}
+.carbon .logo{color:#f5f6f7;filter:none}
+.carbon .face{background:#0a0b0d}
+.carbon .e{background:linear-gradient(90deg,#2b2e33,#0b0c0e 50%,#3b3f45)}
+.carbon .e.t{background:linear-gradient(180deg,#3b3f45,#17191c)}.carbon .e.b{background:linear-gradient(180deg,#0b0c0e,#050506)}
+.carbon .btn.p{background:#f5f6f7;color:#0a0c0e;border-color:#f5f6f7;box-shadow:none}
+.carbon .btn.p:hover{background:transparent;color:#f5f6f7}
+.carbon .btn{border-color:rgba(245,246,247,.5)}
+@media(prefers-reduced-motion:reduce){.dot,.floor::before{animation:none}}
+
 </style>
 </head>
-<body>
+<body class="carbon">
+<div class="floor" aria-hidden="true"></div>
 <div class="stage" id="stage">
  <div class="card" id="card">
   <div class="face front">
    <canvas id="cf" aria-hidden="true"></canvas>
    <div class="in">
     <div class="top"><span><i class="dot"></i>SYS.STATUS: ONLINE</span><span>MONAD EDGE</span></div>
-    <svg class="logo" viewBox="94 144 212 312" role="img" aria-label="Monad Edge logo"><path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#0a0c0e" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <svg class="logo" viewBox="94 144 212 312" role="img" aria-label="Monad Edge logo"><path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
     <h1 class="eng decode-text">Jesse DeWayne McCready</h1>
     <div class="role eng">Principal Architect / CEO</div>
     <p class="tag">Founder of <b>MONAD EDGE LLC</b>. Developer of <b>Zero-Entropy Topology (Z.E.T.)</b>.</p>
@@ -96,7 +116,7 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
   <div class="face back">
    <canvas id="cb" aria-hidden="true"></canvas>
    <div class="in">
-    <svg class="logo" viewBox="94 144 212 312" aria-hidden="true"><path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="#0a0c0e" stroke="#0a0c0e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <svg class="logo" viewBox="94 144 212 312" aria-hidden="true"><path d="M100,150 L300,150 C220,170 200,235 200,290 C200,235 180,170 100,150 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M100,450 L300,450 C220,430 200,365 200,310 C200,365 180,430 100,450 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg>
     <div class="nm eng">Monad Edge</div>
     <div class="sb eng">Zero-Entropy Topology</div>
    </div>
@@ -125,12 +145,27 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
 (function(){
   var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
   var fs='#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n'+
-  'uniform vec2 u_res;uniform mat3 u_R;'+
+  'uniform vec2 u_res;uniform mat3 u_R;uniform float u_mode,u_c;'+
   'float sq(float x){return x*x;}'+
   'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}'+
   'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}'+
   'vec3 fx(vec3 v){vec3 w=u_R*v;w.y=-w.y;return w;}'+
   'void main(){vec2 px=gl_FragCoord.xy;vec2 uv=px/u_res;'+
+  'if(u_mode>.5){vec2 g=px/u_c;vec2 id=floor(g);vec2 c=fract(g);'+
+  'float hz=1.-step(2.,mod(id.x-id.y,4.));'+
+  'vec3 N=fx(hz>.5?normalize(vec3(0.,-(c.y-.5)*1.4,1.)):normalize(vec3((c.x-.5)*1.4,0.,1.)));'+
+  'vec3 T=hz>.5?fx(vec3(1.,0.,0.)):fx(vec3(0.,-1.,0.));vec3 Bt=hz>.5?fx(vec3(0.,-1.,0.)):fx(vec3(1.,0.,0.));'+
+  'vec2 p=uv-.5;vec3 V=normalize(vec3(-p.x*.6,-p.y*.6,1.));'+
+  'vec3 L1=normalize(vec3(-.45,.75,.55)),L2=normalize(vec3(.8,-.2,.5));'+
+  'vec3 H1=normalize(L1+V),H2=normalize(L2+V);'+
+  'float w1=exp(-2.*(sq(dot(H1,T)/.55)+sq(dot(H1,Bt)/.16))/(1.+dot(H1,N)));'+
+  'float w2=exp(-2.*(sq(dot(H2,T)/.55)+sq(dot(H2,Bt)/.2))/(1.+dot(H2,N)));'+
+  'float cw=hz>.5?c.y:c.x;float ao=(.6+.4*sin(3.1416*(hz>.5?c.x:c.y)))*(.55+.45*smoothstep(0.,.09,min(cw,1.-cw)))*(.85+.3*n(hz>.5?vec2(px.x*.05,px.y*1.3):vec2(px.y*.05,px.x*1.3)));'+
+  'vec3 Rc=reflect(-V,fx(vec3(0.,0.,1.)));'+
+  'float gl1=pow(max(dot(Rc,L1),0.),60.)*.7+pow(max(dot(Rc,L2),0.),90.)*.5;'+
+  'vec3 col=vec3(.016,.017,.02)*(.6+.9*ao)+vec3(.5,.55,.62)*(w1*.22+w2*.14)*ao+vec3(.9,.95,1.)*gl1+vec3(.5,.55,.6)*smoothstep(.55,.9,Rc.y)*.10;'+
+  'vec2 dm=min(px,u_res-px);float e=min(dm.x,dm.y);col+=vec3(.5)*smoothstep(2.5,0.,e)*.22;'+
+  'col=col/(1.+col*.8);gl_FragColor=vec4(col,1.);return;}'+
   'float g=n(vec2(px.x*.012,px.y*.9))*.55+n(vec2(px.x*.03,px.y*.35))*.3+n(vec2(px.x*.004,px.y*2.2))*.15;float d=g-.5;'+
   'vec3 N=fx(normalize(vec3(d*.04,-d*.30,1.)));vec3 T=fx(vec3(1.,0.,0.));vec3 B=fx(vec3(0.,-1.,0.));'+
   'vec2 p=uv-.5;vec3 V=normalize(vec3(-p.x*.6,-p.y*.6,1.));'+
@@ -152,14 +187,15 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
     gl.useProgram(pr);var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
     gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
     var l=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);
-    var ur=gl.getUniformLocation(pr,'u_res'),uR=gl.getUniformLocation(pr,'u_R');
+    var ur=gl.getUniformLocation(pr,'u_res'),uR=gl.getUniformLocation(pr,'u_R'),uMo=gl.getUniformLocation(pr,'u_mode'),uC=gl.getUniformLocation(pr,'u_c');
     return {size:function(w,h){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);},
-      draw:function(m){gl.uniform2f(ur,cv.width,cv.height);gl.uniformMatrix3fv(uR,false,m);gl.drawArrays(gl.TRIANGLES,0,3);}};
+      draw:function(m,mo,cl){gl.uniform2f(ur,cv.width,cv.height);gl.uniformMatrix3fv(uR,false,m);gl.uniform1f(uMo,mo);gl.uniform1f(uC,cl);gl.drawArrays(gl.TRIANGLES,0,3);}};
   }
   var F=mk(document.getElementById('cf')),Bk=mk(document.getElementById('cb'));
+  var cell=6,fin=1,lastIn=performance.now();
   var card=document.getElementById('card'),stage=document.getElementById('stage'),pill=document.getElementById('pill');
   function resize(){var r=card.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
-    var w=Math.round(card.offsetWidth*d),h=Math.round(card.offsetHeight*d);if(F)F.size(w,h);if(Bk)Bk.size(w,h);}
+    var w=Math.round(card.offsetWidth*d),h=Math.round(card.offsetHeight*d);if(F)F.size(w,h);if(Bk)Bk.size(w,h);cell=Math.max(6,Math.round(w*2/89));}
   if(window.ResizeObserver)new ResizeObserver(resize).observe(card);else addEventListener('resize',resize);
   resize();
   var D=Math.PI/180;
@@ -170,11 +206,11 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
   var rx=0,ry=0,vx=0,vy=0,hx=0,hy=0,mode='stable',drag=false,moved=false,lx=0,ly=0;
   function stabilize(){mode='stab';vx=vy=0;}
   function onCtl(t){return t&&t.closest&&t.closest('a,button');}
-  stage.addEventListener('pointerdown',function(e){if(onCtl(e.target))return;drag=true;moved=false;lx=e.clientX;ly=e.clientY;});
+  stage.addEventListener('pointerdown',function(e){if(onCtl(e.target))return;lastIn=performance.now();drag=true;moved=false;lx=e.clientX;ly=e.clientY;});
   addEventListener('pointermove',function(e){
     if(drag){var dx=e.clientX-lx,dy=e.clientY-ly;
       if(!moved&&Math.abs(dx)+Math.abs(dy)<4)return;
-      moved=true;mode='free';stage.classList.add('drag');
+      moved=true;lastIn=performance.now();mode='free';stage.classList.add('drag');
       vy=Math.max(-40,Math.min(40,dx*.5));vx=Math.max(-40,Math.min(40,-dy*.5));
       ry+=vy;rx+=vx;lx=e.clientX;ly=e.clientY;
     }else if(mode==='stable'&&e.pointerType==='mouse'&&!reduce){
@@ -187,6 +223,7 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
   addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='s'||e.key==='S')stabilize();});
   var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   function frame(){
+    if(mode==='free'&&!drag&&performance.now()-lastIn>4000)stabilize();
     if(!drag){
       if(mode==='free'){ry+=vy;rx+=vx;vy*=.972;vx*=.972;if(Math.abs(vy)<.03&&Math.abs(vx)<.03){vy=vx=0;}}
       else if(mode==='stab'){var ty=Math.round(ry/360)*360,tx=Math.round(rx/360)*360;
@@ -196,7 +233,7 @@ h1{font:600 clamp(1.45rem,6.4vw,1.75rem)/1.12 var(--display);text-transform:uppe
     }
     card.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';
     var front=Math.cos(rx*D)*Math.cos(ry*D)>=0,on=mode!=='stable';
-    var m=mat(rx,ry,!front);if(front){if(F)F.draw(m);}else{if(Bk)Bk.draw(m);}
+    var m=mat(rx,ry,!front);if(front){if(F)F.draw(m,fin,cell);}else{if(Bk)Bk.draw(m,fin,cell);}
     if(on!==pill.classList.contains('on')){pill.classList.toggle('on',on);pill.textContent=on?'Stabilize':'Drag to rotate';}
     requestAnimationFrame(frame);
   }
