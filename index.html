@@ -301,11 +301,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-ite
   'float f=(n(uv*as*2.2+vec2(u_t*.02,u_s*.35))*.6+n(uv*as*4.4-vec2(u_t*.015,u_s*.2))*.3)*.8;'+
   'vec2 q=(uv-u_m)*as;f+=.75*exp(-dot(q,q)*9.);f=clamp(f,0.,1.);'+
   /* chip routing: orthogonal traces, square vias, fine cell borders */
-  'vec2 g=uv*as*92.;g.y+=u_s*9.;vec2 id=floor(g);vec2 c=fract(g)-.5;'+
+  'vec2 g=uv*as*140.;g.y+=u_s*9.;vec2 id=floor(g);vec2 c=fract(g)-.5;'+
   'float hh=h(id),hv=h(id+vec2(17.,3.)),hp=h(id+vec2(5.,29.));'+
-  'float lh=step(.38,hh)*smoothstep(.09,.05,abs(c.y));'+
-  'float lv=step(.38,hv)*smoothstep(.09,.05,abs(c.x));'+
-  'float pad=step(.7,hp)*step(.38,hh)*step(.38,hv)*smoothstep(.2,.16,max(abs(c.x),abs(c.y)));'+
+  'float lh=step(.38,hh)*smoothstep(.13,.07,abs(c.y));'+
+  'float lv=step(.38,hv)*smoothstep(.13,.07,abs(c.x));'+
+  'float pad=step(.7,hp)*step(.38,hh)*step(.38,hv)*smoothstep(.24,.18,max(abs(c.x),abs(c.y)));'+
   'float cell=smoothstep(.47,.5,max(abs(c.x),abs(c.y)))*.35;'+
   'float m=max(max(lh,lv),pad)+cell;'+
   'vec3 hc=ramp(f);'+
