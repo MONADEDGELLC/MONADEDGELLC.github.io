@@ -30,7 +30,7 @@ h1{font:500 clamp(3rem,6.1vw,6.1rem)/.98 var(--serif);letter-spacing:-.025em;col
 h2{font:500 clamp(1.5rem,2.2vw,2rem)/1.15 var(--serif);letter-spacing:-.01em;color:#fff;margin-top:1rem}
 h3{font:500 1.15rem var(--serif);color:#fff;margin:.4rem 0 .3rem}
 .lede{font-size:1.12rem;line-height:1.8;max-width:56ch;margin-top:2.4rem;color:#e9ebee}
-p.b{margin-top:1.4rem;font-size:.97rem;line-height:1.8}
+p.b{margin-top:1.4rem;font-size:.97rem;line-height:1.8;max-width:64ch}
 .btns{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2.8rem}
 .btn{display:inline-block;text-decoration:none;font:400 .8rem var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:1rem 1.5rem;border:1px solid #fff;color:#fff;transition:.2s}
 .btn.s{background:#fff;color:#000}.btn:hover{background:#fff;color:#000}.btn.s:hover{background:transparent;color:#fff}
@@ -39,7 +39,7 @@ p.b{margin-top:1.4rem;font-size:.97rem;line-height:1.8}
 .tbl{margin-top:1.9rem;border-top:1px solid var(--rule)}
 .tr{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid var(--rule);font-size:.93rem}
 .tr>*{padding:1rem 0}.tr dd{color:#fff;font-weight:400}
-.obj{margin-top:1.8rem;display:grid;gap:1.7rem}.obj div{border-top:1px solid var(--rule);padding-top:.5rem}.obj p{font-size:.92rem;color:var(--dim)}
+.obj{margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:2.6rem 3.5rem}.obj div{border-top:1px solid var(--rule);padding-top:.8rem}.obj p{font-size:.92rem;color:var(--dim)}
 svg.ch{width:100%;max-width:520px;height:auto;display:block;margin-top:1rem}.cl{font:400 10px var(--mono);letter-spacing:.06em;fill:var(--dim);text-transform:uppercase}.cv{font:500 13px var(--sans);fill:#fff}
 .key{display:flex;gap:1.4rem;margin-top:.8rem}.key i{display:inline-block;width:11px;height:11px;margin-right:.45rem;vertical-align:-1px}
 .art{position:fixed;top:0;right:0;width:68vw;height:100vh;z-index:0;pointer-events:none;opacity:.26;filter:blur(.7px) contrast(.9);background:url(hero-prometheus-worn.webp) right center/cover no-repeat;
@@ -52,7 +52,7 @@ svg.ch{width:100%;max-width:520px;height:auto;display:block;margin-top:1rem}.cl{
 .tbi{border:1px solid rgba(255,255,255,.95);display:grid;grid-template-columns:2fr 2fr 1fr 1fr 1fr;font:400 .8rem var(--sans)}
 .tbi div{padding:.75rem 1rem;border-right:1px solid rgba(255,255,255,.95)}.tbi div:last-child{border-right:0}.tbi span{display:block;color:var(--dim);font:400 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15rem}.tbi b{font-weight:400;color:#fff}
 .foot{max-width:1320px;margin:1.2rem auto 3rem;padding:0 3rem}
-@media(max-width:1000px){.blk,.pair{margin-top:5rem}.pair .blk{margin-top:0}.tn{display:none}.main{padding:2rem 1.4rem}.art{width:100vw;opacity:.2}.pair{grid-template-columns:1fr}.hd,.tb,.foot{padding-left:1.4rem;padding-right:1.4rem}.tbi{grid-template-columns:1fr 1fr}.tbi div{border-bottom:1px solid #fff}.hd{justify-content:flex-start}}
+@media(max-width:1000px){.obj{grid-template-columns:1fr}.blk,.pair{margin-top:5rem}.pair .blk{margin-top:0}.tn{display:none}.main{padding:2rem 1.4rem}.art{width:100vw;opacity:.2}.pair{grid-template-columns:1fr}.hd,.tb,.foot{padding-left:1.4rem;padding-right:1.4rem}.tbi{grid-template-columns:1fr 1fr}.tbi div{border-bottom:1px solid #fff}.hd{justify-content:flex-start}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -60,7 +60,7 @@ svg.ch{width:100%;max-width:520px;height:auto;display:block;margin-top:1rem}.cl{
 <div class="art" aria-hidden="true"></div>
 <header><div class="hd">
  <a class="brand" href="#overview" aria-label="MONAD EDGE LLC home">Monad<br>Edge LLC</a>
- <nav class="tn" aria-label="Sections"><a href="#bottleneck">Bottleneck</a><a href="#evidence">Evidence</a><a href="#objectives">Objectives</a><a href="#trajectory">Trajectory</a><a href="#company">Company</a><a href="#contact">Contact</a></nav>
+ <nav class="tn" aria-label="Sections"><a href="#bottleneck">Bottleneck</a><a href="#objectives">Objectives</a><a href="#evidence">Evidence</a><a href="#trajectory">Trajectory</a><a href="#company">Company</a><a href="#contact">Contact</a></nav>
 </div></header>
 <div class="main">
 <div class="left">
@@ -69,14 +69,12 @@ svg.ch{width:100%;max-width:520px;height:auto;display:block;margin-top:1rem}.cl{
   <p class="lede">MONAD EDGE LLC develops the MONAD-IME (Isothermal Mesh Executive), a Layer 1.5 thermodynamic executive that governs heat at the lowest layer of edge computing hardware. Built for computing where size, weight, and power decide what is possible.</p>
   <div class="btns"><a class="btn s" href="#evidence">View evidence</a></div>
  </section>
- <div class="pair">
   <section class="blk" id="bottleneck"><div class="mono">Sheet 02 / Bottleneck</div><h2>Heat is the constraint the network stack cannot see.</h2>
    <p class="b">The software that runs the network has no awareness of the physical heat state of the silicon beneath it. Hot nodes keep taking load until frequency scaling forces degradation, dropped packets, or hardware failure. In size-, weight-, and power-limited platforms, mechanical cooling is too heavy and draws too much power to close the gap.</p></section>
-  <section class="blk" id="objectives"><div class="mono">Sheet 04 / Objectives</div><h2>Design objectives.</h2>
-   <div class="obj"><div><h3>Zero fans</h3><p>Thermal limits held in software, not by moving air.</p></div><div><h3>Zero water</h3><p>Heat managed at the chip layer, with no cooling water to source or reject.</p></div><div><h3>Zero hotspots</h3><p>Isothermal operation across the mesh, maintained entirely in software.</p></div></div>
+  <section class="blk" id="objectives"><div class="mono">Sheet 03 / Objectives</div><h2>Design objectives.</h2>
+   <div class="obj"><div><span class="mono">01</span><h3>Fanless operation</h3><p>Thermal limits held in software, not by moving air.</p></div><div><span class="mono">02</span><h3>Waterless heat management</h3><p>Heat managed at the chip layer, with no cooling water to source or reject.</p></div><div><span class="mono">03</span><h3>Isothermal mesh</h3><p>Uniform operating temperature across the mesh, maintained in software.</p></div><div><span class="mono">04</span><h3>Sustained performance</h3><p>Throttling and frequency collapse preempted under sustained load.</p></div></div>
    <p class="mono" style="margin-top:1rem">Objectives to be validated on breadboard hardware</p></section>
- </div>
- <section class="blk" id="evidence"><div class="mono" style="display:flex;justify-content:space-between"><span>Sheet 03 / Evidence</span><span>Preliminary</span></div><h2>Measured against baseline.</h2>
+ <section class="blk" id="evidence"><div class="mono" style="display:flex;justify-content:space-between"><span>Sheet 04 / Evidence</span><span>Preliminary</span></div><h2>Measured against baseline.</h2>
   <p class="b" style="max-width:62ch">Hardware-in-the-loop A/B testing under sustained load, comparing a baseline system with MONAD-IME active. Bars show each measure with the baseline set to 100.</p>
   <div class="pair" style="margin-top:2.6rem;gap:3.5rem">
    <dl class="tbl" style="margin-top:0;align-self:start"><div class="tr"><dt class="mono">Platform</dt><dd>Single AMD node</dd></div><div class="tr"><dt class="mono">Condition</dt><dd>Sustained thermal and network stress</dd></div><div class="tr"><dt class="mono">Status</dt><dd>Laboratory result. Validation on target platforms is the next milestone.</dd></div></dl>
@@ -84,13 +82,12 @@ svg.ch{width:100%;max-width:520px;height:auto;display:block;margin-top:1rem}.cl{
    <div class="key mono"><span><i style="border:1px solid rgba(255,255,255,.55)"></i>Baseline</span><span><i style="background:#fff"></i>MONAD-IME active</span></div></div>
   </div>
  </section>
- <div class="pair">
   <section class="blk" id="trajectory"><div class="mono">Sheet 05 / Trajectory</div><h2>From laboratory to platform.</h2>
    <dl class="tbl"><div class="tr"><dt class="mono">TRL 3 &middot; Current</dt><dd>Concept validated in the laboratory with hardware-in-the-loop testing</dd></div><div class="tr"><dt class="mono">TRL 4 &middot; Next</dt><dd>Breadboard validation on AMD Ryzen Embedded SBC clusters and RISC-V adaptive SoCs</dd></div><div class="tr"><dt class="mono">TRL 5&ndash;6 &middot; Planned</dt><dd>Relevant-environment prototype on tactical edge platforms</dd></div><div class="tr"><dt class="mono">Transition</dt><dd>Defense and commercial edge infrastructure</dd></div></dl></section>
   <section class="blk" id="company"><div class="mono">Sheet 06 / Company</div><h2>MONAD EDGE LLC.</h2>
-   <dl class="tbl"><div class="tr"><dt class="mono">Location</dt><dd>Shreveport, Louisiana</dd></div><div class="tr"><dt class="mono">Ownership</dt><dd>100% US-owned and operated</dd></div><div class="tr"><dt class="mono">Registration</dt><dd>SAM.gov registered</dd></div><div class="tr"><dt class="mono">CAGE</dt><dd>243J6</dd></div><div class="tr"><dt class="mono">UEI</dt><dd>YE9ZHNXRY2N8</dd></div><div class="tr"><dt class="mono">Founder / CEO</dt><dd>Jesse DeWayne McCready</dd></div></dl></section>
- </div>
- <p class="b" style="max-width:70ch;margin-top:1.4rem">Founded by an engineer who combines hands-on industrial robotics installation and precision CNC manufacturing with bare-metal C++ and Rust systems engineering, joining physical thermodynamics and low-level systems architecture under one roof.</p>
+   <dl class="tbl"><div class="tr"><dt class="mono">Location</dt><dd>Shreveport, Louisiana</dd></div><div class="tr"><dt class="mono">Ownership</dt><dd>100% US-owned and operated</dd></div><div class="tr"><dt class="mono">Registration</dt><dd>SAM.gov registered</dd></div><div class="tr"><dt class="mono">CAGE</dt><dd>243J6</dd></div><div class="tr"><dt class="mono">UEI</dt><dd>YE9ZHNXRY2N8</dd></div><div class="tr"><dt class="mono">Founder / CEO</dt><dd>Jesse DeWayne McCready</dd></div></dl>
+   <p class="b" style="max-width:66ch;margin-top:1.8rem">Founded by an engineer who combines hands-on industrial robotics installation and precision CNC manufacturing with bare-metal C++ and Rust systems engineering, joining physical thermodynamics and low-level systems architecture under one roof.</p>
+  </section>
  <section class="blk" id="contact"><div class="mono">Sheet 07 / Contact</div><h2>Request a capability statement.</h2>
   <p class="b">For capability statements, technical discussion, or research collaboration.</p>
   <div class="btns"><a class="btn s" href="mailto:ceo@monadedgellc.space?subject=Capability%20statement%20request">ceo@monadedgellc.space</a><a class="btn" href="https://www.linkedin.com/company/monad-edge-llc" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></section>
